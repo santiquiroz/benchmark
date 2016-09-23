@@ -31,4 +31,5 @@ public class tiempo {
 	public String tomo (){
 		return "tomo: "+(tiempoFinal-tiempoInicial)+"milisigundos";
 	}
+	
 }
