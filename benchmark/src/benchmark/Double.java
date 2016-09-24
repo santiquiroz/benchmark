@@ -10,12 +10,18 @@ public class Double {
 	private String timeMinus;
 	private String timeMultiply;
 	private String timeDivide;
+	private String timeAcos;
 	private double X;
 	private tiempo time = new tiempo();
 	
 	public Double() {
 		ArrayDouble arrayDouble = new ArrayDouble();
 		timeQuickSort = timeQuickSort(arrayDouble);
+		timePlus = timePlus(arrayDouble);
+		timeMinus = timeMinus(arrayDouble);
+		timeMultiply = timeMultiply(arrayDouble);
+		timeDivide = timeDivide(arrayDouble);
+		timeAcos = timeAcos(arrayDouble);
 	}
 	
 	public String timeQuickSort(ArrayDouble arrayDouble) {
@@ -25,7 +31,7 @@ public class Double {
 		time.stop(); return time.tomo();
 	}
 	
-	public String plus(ArrayDouble arrayDouble) {
+	public String timePlus(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		X = arrayTest.get(0);
 		time.reset(); time.start();
@@ -35,7 +41,7 @@ public class Double {
 		time.stop(); return time.tomo();
 	}
 	
-	public String minus(ArrayDouble arrayDouble) {
+	public String timeMinus(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		X = arrayTest.get(0);
 		time.reset(); time.start();
@@ -45,7 +51,7 @@ public class Double {
 		time.stop(); return time.tomo();
 	}
 	
-	public String multiply(ArrayDouble arrayDouble) {
+	public String timeMultiply(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		X = arrayTest.get(0);
 		time.reset(); time.start();
@@ -55,12 +61,21 @@ public class Double {
 		time.stop(); return time.tomo();
 	}
 	
-	public String divide(ArrayDouble arrayDouble) {
+	public String timeDivide(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		X = arrayTest.get(0);
 		time.reset(); time.start();
 		for (int i = 1; i < arrayTest.size(); i++) {
 			X = X / arrayTest.get(i);
+		}
+		time.stop(); return time.tomo();
+	}
+	
+	public String timeAcos(ArrayDouble arrayDouble) {
+		arrayTest = arrayDouble.getDoubleArray();
+		time.reset(); time.start();
+		for (int i = 1; i < arrayTest.size(); i++) {
+			X = acos(arrayTest.get(i));
 		}
 		time.stop(); return time.tomo();
 	}
