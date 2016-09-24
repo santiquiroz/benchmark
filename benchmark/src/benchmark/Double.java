@@ -6,8 +6,12 @@ public class Double {
 	
 	private ArrayList<Double> arrayTest = new ArrayList();
 	private String timeQuickSort;
-	private Double X;
-	private Tiempo time = new Tiempo();
+	private String timePlus;
+	private String timeMinus;
+	private String timeMultiply;
+	private String timeDivide;
+	private double X;
+	private tiempo time = new tiempo();
 	
 	public Double() {
 		ArrayDouble arrayDouble = new ArrayDouble();
@@ -21,12 +25,42 @@ public class Double {
 		time.stop(); return time.tomo();
 	}
 	
-	public String suma(ArrayDouble arrayDouble) {
+	public String plus(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
-		X = 0.0;
+		X = arrayTest.get(0);
 		time.reset(); time.start();
-		for (int i = 0; i < arrayTest.size(); i++) {
-			X = X + arrayTest.get(i); //ERROR!!!  
+		for (int i = 1; i < arrayTest.size(); i++) {
+			X = X + arrayTest.get(i);
+		}
+		time.stop(); return time.tomo();
+	}
+	
+	public String minus(ArrayDouble arrayDouble) {
+		arrayTest = arrayDouble.getDoubleArray();
+		X = arrayTest.get(0);
+		time.reset(); time.start();
+		for (int i = 1; i < arrayTest.size(); i++) {
+			X = X - arrayTest.get(i);
+		}
+		time.stop(); return time.tomo();
+	}
+	
+	public String multiply(ArrayDouble arrayDouble) {
+		arrayTest = arrayDouble.getDoubleArray();
+		X = arrayTest.get(0);
+		time.reset(); time.start();
+		for (int i = 1; i < arrayTest.size(); i++) {
+			X = X * arrayTest.get(i);
+		}
+		time.stop(); return time.tomo();
+	}
+	
+	public String divide(ArrayDouble arrayDouble) {
+		arrayTest = arrayDouble.getDoubleArray();
+		X = arrayTest.get(0);
+		time.reset(); time.start();
+		for (int i = 1; i < arrayTest.size(); i++) {
+			X = X / arrayTest.get(i);
 		}
 		time.stop(); return time.tomo();
 	}

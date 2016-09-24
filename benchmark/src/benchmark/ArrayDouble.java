@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class ArrayDouble {
 		
-	private ArrayList<Double> doubleArray = new ArrayList();
+	private ArrayList<double> doubleArray = new ArrayList<double>();
 	
 	public ArrayDouble() {
 		for (int i = 0; i < 100000; i++) {
-			this.doubleArray.add(Double.parseDouble(Math.random()));
+			doubleArray.add(3.5);
 		}
 	}
 	
