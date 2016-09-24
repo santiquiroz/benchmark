@@ -8,7 +8,7 @@ public class ArrayDouble {
 	
 	public ArrayDouble() {
 		for (int i = 0; i < 100000; i++) {
-			doubleArray.add(3.5);
+			doubleArray.add(Math.random());
 		}
 	}
 	
