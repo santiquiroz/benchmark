@@ -11,6 +11,7 @@ public class lectura {
 	ObjectInputStream or = null;
 	ArrayList<Integer> enteros=new ArrayList();
 	ArrayList<Integer> quickEnteros=new ArrayList();
+	ArrayList<double> doubles = new ArrayList();
 	tiempo lectura = new tiempo();
 	
 	File archivo = new File("D:\\DANIEL\\Documents\\Estudios\\Universidad Nacional\\Algoritmos y Programación\\Programación Orientada a Objetos\\Eclipse Workspace\\datos\\ej1");
