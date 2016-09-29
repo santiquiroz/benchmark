@@ -1,8 +1,22 @@
 package benchmark;
 
 public class QuickSort {
+	public String tiempoQuickSort(double A[], int izq, int der){
+		tiempo bench = new tiempo();
+		bench.start();
+		quicksort(A,izq,der);
+		bench.stop();
+		return bench.tomo();
+	}
+	public String tiempoQuickSort(int A[], int izq, int der){
+		tiempo bench = new tiempo();
+		bench.start();
+		quicksort(A,izq,der);
+		bench.stop();
+		return bench.tomo();
+	}
 	public  void quicksort (double A[], int izq, int der) {
-
+		  
 		  double pivote=A[izq]; // tomamos primer elemento como pivote
 		  int i=izq; // i realiza la búsqueda de izquierda a derecha
 		  int j=der; // j realiza la búsqueda de derecha a izquierda
