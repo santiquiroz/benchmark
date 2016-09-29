@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class ArrayDouble {
 		
-	private ArrayList<double> doubleArray = new ArrayList<double>();
+	private double doubleArray[] = new double[1000000];
+	int i;
 	
 	public ArrayDouble() {
-		for (int i = 0; i < 100000; i++) {
-			doubleArray.add(Math.random());
+		for (int s=0; s<1000000 ; s++){
+			doubleArray[s]  = (Math.random() * (1000000  - 1) + 1);
 		}
 	}
 	
-	public ArrayList getDoubleArray() {
+	public double[] getDoubleArray() {
 		return this.doubleArray;
 	}
 	

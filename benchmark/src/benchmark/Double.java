@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Double {
 	
-	private ArrayList<Double> arrayTest = new ArrayList();
+	private double arrayTest[] = new double[1000000];
 	private String timeQuickSort;
 	private String timePlus;
 	private String timeMinus;
@@ -27,46 +27,46 @@ public class Double {
 	public String timeQuickSort(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		time.reset(); time.start();
-		quickSort(arrayTest,arrayTest.get(0),arrayTest.get(arrayTest.size()-1));
+		quickSort(arrayTest,arrayTest[0],arrayTest[arrayTest.length-1]);
 		time.stop(); return time.tomo();
 	}
 	
 	public String timePlus(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
-		X = arrayTest.get(0);
+		X = arrayTest[0];
 		time.reset(); time.start();
-		for (int i = 1; i < arrayTest.size(); i++) {
-			X = X + arrayTest.get(i);
+		for (int i = 1; i < arrayTest.length; i++) {
+			X = X + arrayTest[i];
 		}
 		time.stop(); return time.tomo();
 	}
 	
 	public String timeMinus(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
-		X = arrayTest.get(0);
+		X = arrayTest[0];
 		time.reset(); time.start();
-		for (int i = 1; i < arrayTest.size(); i++) {
-			X = X - arrayTest.get(i);
+		for (int i = 1; i < arrayTest.length; i++) {
+			X = X - arrayTest[i];
 		}
 		time.stop(); return time.tomo();
 	}
 	
 	public String timeMultiply(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
-		X = arrayTest.get(0);
+		X = arrayTest[0];
 		time.reset(); time.start();
-		for (int i = 1; i < arrayTest.size(); i++) {
-			X = X * arrayTest.get(i);
+		for (int i = 1; i < arrayTest.length; i++) {
+			X = X * arrayTest[i];
 		}
 		time.stop(); return time.tomo();
 	}
 	
 	public String timeDivide(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
-		X = arrayTest.get(0);
+		X = arrayTest[0];
 		time.reset(); time.start();
-		for (int i = 1; i < arrayTest.size(); i++) {
-			X = X / arrayTest.get(i);
+		for (int i = 1; i < arrayTest.length; i++) {
+			X = X / arrayTest[i];
 		}
 		time.stop(); return time.tomo();
 	}
@@ -74,8 +74,8 @@ public class Double {
 	public String timeAcos(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		time.reset(); time.start();
-		for (int i = 1; i < arrayTest.size(); i++) {
-			X = acos(arrayTest.get(i));
+		for (int i = 1; i < arrayTest.length; i++) {
+			X = Math.acos(arrayTest[i]);
 		}
 		time.stop(); return time.tomo();
 	}
