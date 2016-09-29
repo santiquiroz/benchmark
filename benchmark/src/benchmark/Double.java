@@ -25,7 +25,7 @@ public class Double {
 	public String timeQuickSort(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
 		time.reset(); time.start();
-		quickSort(arrayTest,arrayTest[0],arrayTest[arrayTest.length-1]);
+		quickSort(arrayTest,0,arrayTest.length-1);
 		time.stop(); return time.tomo();
 	}
 	
