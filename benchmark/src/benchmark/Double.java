@@ -11,6 +11,7 @@ public class Double {
 	private String timeAcos;
 	private double X;
 	private tiempo time = new tiempo();
+	private QuickSort quickSort = new QuickSort();
 	
 	public Double() {
 		ArrayDouble arrayDouble = new ArrayDouble();
@@ -24,9 +25,7 @@ public class Double {
 	
 	public String timeQuickSort(ArrayDouble arrayDouble) {
 		arrayTest = arrayDouble.getDoubleArray();
-		time.reset(); time.start();
-		quickSort(arrayTest,0,arrayTest.length-1);
-		time.stop(); return time.tomo();
+		return quickSort.tiempoQuickSort(arrayTest,0,arrayTest.length-1);
 	}
 	
 	public String timePlus(ArrayDouble arrayDouble) {
