@@ -1,7 +1,7 @@
 package benchmark;
 
 public class QuickSort {
-	public static void quicksort (double A[], int izq, int der) {
+	public  void quicksort (double A[], int izq, int der) {
 
 		  double pivote=A[izq]; // tomamos primer elemento como pivote
 		  int i=izq; // i realiza la búsqueda de izquierda a derecha
@@ -24,7 +24,7 @@ public class QuickSort {
 		   if(j+1 <der)
 		      quicksort(A,j+1,der); // ordenamos subarray derecho
 		}
-	public static void quicksort (int A[], int izq, int der) {
+	public  void quicksort (int A[], int izq, int der) {
 
 		  int pivote=A[izq]; // tomamos primer elemento como pivote
 		  int i=izq; // i realiza la búsqueda de izquierda a derecha
