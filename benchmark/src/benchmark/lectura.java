@@ -16,11 +16,11 @@ public class lectura{
 	private double quickDoubles[]=new double [1000000];
 	tiempo lectura = new tiempo();
 	tiempo todos= new tiempo();
-	
-	File arrayEnteros = new File("C://Program Files//temp//arrayEnteros.txt");
-	File arrayDoubles = new File("C://Program Files//temp//arrayDoubles.txt");
-	File arrayEnterosOrdenados = new File("C://Program Files//temp//arrayEnterosOrdenados.txt");
-	File arrayDoublesOrdenados = new File("C://Program Files//temp//arrayDoublesOrdenados.txt");
+	File carpeta = new File("C:\\temp");
+	File arrayEnteros = new File("C:\\temp\\arrayEnteros.txt");
+	File arrayDoubles = new File("C:\\temp\\arrayDoubles.txt");
+	File arrayEnterosOrdenados = new File("C:\\temp\\arrayEnterosOrdenados.txt");
+	File arrayDoublesOrdenados = new File("C:\\temp\\arrayDoublesOrdenados.txt");
 	private double lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles;
 	private double guardadoDoubles;
 	private double guardadoEnteros;
@@ -356,6 +356,20 @@ lectura.reset();
 	public int[] getArrayEnteroOrdenado(){
 		return quickEnteros;
 	}
+	
+	
+	
+	
+	//borrar todos (carpeta que los contiene)
+	public void eliminar(){
+		
+		if((carpeta.exists())&&(carpeta.isDirectory())){
+			carpeta.delete();
+			
+		}
+	
+	}
+		
 }
 
 
