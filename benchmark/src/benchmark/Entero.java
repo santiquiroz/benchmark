@@ -1,6 +1,6 @@
 package benchmark;
 public class Entero extends QuickSort{
-		double timeDivide,timeMinus,timeMultiply,timePlus,timeQuickSort; 
+		private double timeDivide,timeMinus,timeMultiply,timePlus,timeQuickSort; 
 		
 		public void sacarTiempo(int a []) {
 			
@@ -57,6 +57,8 @@ public class Entero extends QuickSort{
 		public void timeQuickSort(int e[]){
 			timeQuickSort=tiempoQuickSort(e, 0,e.length-1 );
 		}
+		
+		//obtener tiempos 
 
 	}
 

@@ -2,7 +2,7 @@ package benchmark;
 public class tiempo {
 	private double tiempoInicial;
 	private double tiempoFinal;
-	boolean iniciado=false;
+	private boolean iniciado=false;
 	public void start (){
 		if(iniciado==true){
 			throw new IllegalStateException("ya se habia iniciado");
@@ -11,7 +11,7 @@ public class tiempo {
 		
 		
 		tiempoInicial= System.currentTimeMillis();
-		iniciado=true;
+		this.iniciado=true;
 		}
 	}
 
@@ -21,6 +21,7 @@ public class tiempo {
 		}
 		else{
 		tiempoFinal=System.currentTimeMillis();
+		this.iniciado=false;
 		}
 		
 	}

@@ -3,16 +3,15 @@ import benchmark.tiempo;
 
 public class creadorArreglos {
 		
-		public int enteros[]   = new  int  [1000000 ];
-		public double dobles[] = new double[1000000 ];
-		public int enterosOrdenados[]   = new  int  [1000000 ];
-		public double doblesOrdenados[] = new double[1000000 ];
-		
+		private int enteros[]   = new  int  [1000000 ];
+		private double dobles[] = new double[1000000 ];
+		private int enterosOrdenados[]   = new  int  [1000000 ];
+		private double doblesOrdenados[] = new double[1000000 ];
 		private int s;
 		private int i;
 		private double z;
 		private double u;
-		
+		public tiempo tiempoTodos= new tiempo();
 		public tiempo tiempoEnterosOrdenados = new tiempo();
 		public tiempo tiempoDoublesOrdenados = new tiempo();
 		public tiempo tiempoEnteros = new tiempo();
@@ -29,7 +28,7 @@ public class creadorArreglos {
 			tiempoEnterosOrdenados.stop();
 		}
 		
-		public void arrayDoblesOrdenados() {
+		public void arrayDoublesOrdenados() {
 			i = 1;
 			tiempoDoublesOrdenados.reset();
 			tiempoDoublesOrdenados.start();
@@ -53,7 +52,7 @@ public class creadorArreglos {
 			tiempoEnteros.stop();
 		}
 		
-		public void arrayDobles() {
+		public void arrayDoubles() {
 			z = 0;
 			tiempoDoubles.reset();
 			tiempoDoubles.start();
@@ -65,21 +64,46 @@ public class creadorArreglos {
 			}
 			tiempoDoubles.stop();
 		}
-		
-		public double tiempoEnterosOrdenados() {
+		public void crearTodos(){
+			tiempoTodos.start();
+			arrayDoubles();
+			arrayEnteros();
+			arrayEnterosOrdenados();
+			arrayDoublesOrdenados();
+			tiempoTodos.stop();
+		}
+		//devolver el tiempo que se demoro 
+		public double getTiempoEnterosOrdenados() {
 			return tiempoEnterosOrdenados.tomo();
 		}
 		
-		public double tiempoDoublesOrdenados() {
+		public double getTiempoDoublesOrdenados() {
 			return tiempoDoublesOrdenados.tomo();
 		}
 		
-		public double tiempoEnteros() {
+		public double getTiempoEnteros() {
 			return tiempoEnteros.tomo();
 		}
 		
-		public double tiempoDoubles() {
+		public double getTiempoDoubles() {
 			return tiempoDoubles.tomo();
+		}
+		public double getTiempoTodos(){
+			return tiempoTodos.tomo();
+		}
+		// devolver los arreglos
+		
+		public int[] getArrayEnteros(){
+			return this.enteros;
+		}
+		public int[] getArrayEnterosOrdenados(){
+			return this.enterosOrdenados;
+		}
+		public double[] getArrayDouble(){
+			return this.dobles;
+		}
+		public double[] getArrayDoubleOrdenado(){
+			return this.doblesOrdenados;
 		}
 		
 		

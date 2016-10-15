@@ -8,22 +8,28 @@ import java.io.ObjectOutputStream;
 
 
 public class lectura{
-	FileInputStream fr = null;
-	ObjectInputStream or = null;
-	int enteros[]=new int [1000000];
-	int quickEnteros[]=new int [1000000];
-	double doubles[]=new double[1000000];
-	double quickDoubles[]=new double [1000000];
+	/*FileInputStream fr = null;
+	ObjectInputStream or = null;*/
+	private int enteros[]=new int [1000000];
+	private int quickEnteros[]=new int [1000000];
+	private double doubles[]=new double[1000000];
+	private double quickDoubles[]=new double [1000000];
 	tiempo lectura = new tiempo();
-	double lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles;
-	File arrayEnteros = new File("C://arrayEnteros");
-	File arrayDoubles = new File("C://arrayDoubles");
-	File arrayEnterosOrdenados = new File("C://arrayEnterosOrdenados");
-	File arrayDoublesOrdenados = new File("C://arrayDoublesOrdenados");
+	tiempo todos= new tiempo();
+	
+	File arrayEnteros = new File("C://Program Files//temp//arrayEnteros.txt");
+	File arrayDoubles = new File("C://Program Files//temp//arrayDoubles.txt");
+	File arrayEnterosOrdenados = new File("C://Program Files//temp//arrayEnterosOrdenados.txt");
+	File arrayDoublesOrdenados = new File("C://Program Files//temp//arrayDoublesOrdenados.txt");
+	private double lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles;
 	private double guardadoDoubles;
 	private double guardadoEnteros;
 	private double guardadoDoublesOrdenados;
+	private double tiempoLeerTodos;
+	private double tiempoGuardarTodos;
+	private double guardadoEnterosOrdenados;
 	public int[] leerEnteros(){
+		arrayEnteros.mkdirs();
 		lectura.start();
 		FileInputStream fr = null;
 		ObjectInputStream or = null;
@@ -57,7 +63,11 @@ public class lectura{
 		return enteros;
 	}
 	public int[] leerQuickEnteros(){
+		arrayEnterosOrdenados.mkdirs();
+		FileInputStream fr = null;
+		ObjectInputStream or = null;
 		lectura.start();
+		
 		try {
 				fr = new FileInputStream(arrayEnterosOrdenados);
 				or = new ObjectInputStream(fr);
@@ -88,6 +98,9 @@ public class lectura{
 		return quickEnteros;
 	}
 	public double[] leerDoubles(){
+		arrayDoubles.mkdirs();
+		FileInputStream fr = null;
+		ObjectInputStream or = null;
 		lectura.start();
 		try {
 				fr = new FileInputStream(arrayDoubles);
@@ -119,6 +132,9 @@ public class lectura{
 		return doubles;
 	}
 	public double[] leerQuickDoubles(){
+		arrayDoublesOrdenados.mkdirs();
+		FileInputStream fr = null;
+		ObjectInputStream or = null;
 		lectura.start();
 		try {
 				fr = new FileInputStream(arrayDoublesOrdenados);
@@ -163,10 +179,9 @@ public class lectura{
 	//guardado
 	
 public void guardarEnteros(int a[]){
-		
-	lectura.start();
 	FileOutputStream fw = null;
 	ObjectOutputStream ow = null;
+	lectura.start();
 	
 	try {
 		fw = new FileOutputStream(arrayEnteros);
@@ -191,10 +206,9 @@ guardadoEnteros = lectura.tomo();
 lectura.reset();
 }
 	public void guardarQuickEnteros(int a []){
-		
-		lectura.start();
 		FileOutputStream fw = null;
 		ObjectOutputStream ow = null;
+		lectura.start();
 		
 		try {
 			fw = new FileOutputStream(arrayEnterosOrdenados);
@@ -215,15 +229,15 @@ lectura.reset();
 			}
 		}
 	lectura.stop();
-	guardadoEnteros = lectura.tomo();
+	guardadoEnterosOrdenados = lectura.tomo();
 	lectura.reset();
 
 	}
 	public void guardarDoubles(double a[]){
-
-		lectura.start();
 		FileOutputStream fw = null;
 		ObjectOutputStream ow = null;
+		lectura.start();
+		
 		
 		try {
 			fw = new FileOutputStream(arrayDoubles);
@@ -250,9 +264,10 @@ lectura.reset();
 	}
 	
 	public void  guardarQuickDoubles(double a[]){
-			lectura.start();
-			FileOutputStream fw = null;
-			ObjectOutputStream ow = null;
+		FileOutputStream fw = null;
+		ObjectOutputStream ow = null;	
+		lectura.start();
+			
 			
 			try {
 				fw = new FileOutputStream(arrayDoublesOrdenados);
@@ -276,4 +291,73 @@ lectura.reset();
 		guardadoDoublesOrdenados = lectura.tomo();
 		lectura.reset();
 	}
+	//leer todos 
+	public void leerTodos(){
+		todos.start();
+		leerDoubles();
+		leerEnteros();
+		leerQuickDoubles();
+		leerQuickDoubles();
+		todos.stop();
+		tiempoLeerTodos=todos.tomo();
+	}
+	//guardar todos 
+	public void guardarTodos(int enteros[],int enterosOrdenados[],double doubles[],double doublesOrdenados[]){
+		todos.start();
+		guardarDoubles(doubles);
+		guardarQuickDoubles(doublesOrdenados);
+		guardarEnteros(enteros);
+		guardarQuickEnteros(enterosOrdenados);
+		todos.stop();
+		tiempoGuardarTodos=todos.tomo();
+	}
+	
+	//obtener los tiempos de lectura y guardado
+	public double getTiempoLecturaEnteros(){
+		return lecturaEnteros;
+	}
+	public double getTiempoLecturaEnterosOrdenados(){
+		return lecturaQuickEnteros;
+	}
+	public double getTiempoLecturaDoubles(){
+		return lecturaDoubles;
+	}	
+	public double getTiempoLecturaDoublesOrdenados(){
+		return lecturaQuickDoubles;
+	}
+	public double getTiempoLecturaTodos(){
+		return tiempoLeerTodos;
+	}
+	public double getTiempoGuardadoEnteros(){
+		return guardadoEnteros;
+	}
+	public double getTiempoGuardadoEnterosOrdenados(){
+		return guardadoEnterosOrdenados;
+	}
+	public double getTiempoGuardadoDoubles(){
+		return guardadoDoubles;
+	}
+	public double getTiempoGuardadoDoublesOrdenados(){
+		return guardadoDoublesOrdenados;
+	}
+	public double getTiempoGuardadoTodos(){
+		return tiempoGuardarTodos;
+	}
+	//obtener arreglos 
+	public double[] getArrayDouble(){
+		return doubles;
+	}
+	public double[] getArrayDoubleOrdenado(){
+		return quickDoubles;
+	}
+	public int[] getArrayEntero(){
+		return enteros;
+	}
+	public int[] getArrayEnteroOrdenado(){
+		return quickEnteros;
+	}
 }
+
+
+
+	
