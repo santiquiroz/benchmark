@@ -28,7 +28,7 @@ public class tiempo {
 	public void reset() {
 		tiempoFinal=0.0;tiempoInicial=0.0;		
 	}
-	public String tomo (){
-		return "tomo: "+(tiempoFinal-tiempoInicial)+"milisigundos";
+	public double tomo (){
+		return (tiempoFinal-tiempoInicial);
 	}
 }

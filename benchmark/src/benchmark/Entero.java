@@ -1,6 +1,16 @@
 package benchmark;
-public class Entero {
-		public String sumaEntero (int enteros[]){
+public class Entero extends QuickSort{
+		double timeDivide,timeMinus,timeMultiply,timePlus,timeQuickSort; 
+		
+		public void sacarTiempo(int a []) {
+			
+			 timeQuickSort(a);
+			 sumaEntero(a);
+			 restaEntero(a);
+			 multiplicacionEntero(a);
+			 divisionEnteros(a);
+		}
+		public void sumaEntero (int enteros[]){ 
 			//suma
 			tiempo suma = new tiempo();
 			int a=0;
@@ -9,9 +19,9 @@ public class Entero {
 				a+=enteros[i];
 			}
 			suma.stop();
-			return suma.tomo();
+			timePlus= suma.tomo();
 		}
-		public String restaEntero(int enteros[]){
+		public void restaEntero(int enteros[]){
 			//resta
 			tiempo resta = new tiempo();
 			int b=0;
@@ -20,9 +30,9 @@ public class Entero {
 				b-=enteros[i];
 			}
 			resta.stop();
-			return resta.tomo();
+			timeMinus = resta.tomo();
 		}
-		public String multiplicacionEntero(int enteros[]){
+		public void multiplicacionEntero(int enteros[]){
 			//multiplicacion 
 			tiempo multiplicacion =new tiempo();
 			int c=enteros[0];
@@ -31,9 +41,9 @@ public class Entero {
 				c*=enteros[i];
 			}
 			multiplicacion.stop();
-			return multiplicacion.tomo();
+			timeMultiply= multiplicacion.tomo();
 		}
-		public String divisionEnteros(int enteros[]){
+		public void divisionEnteros(int enteros[]){
 			//division
 			tiempo division = new tiempo();
 			int d = enteros[0] ;
@@ -42,7 +52,10 @@ public class Entero {
 				d/=enteros[i];
 			}
 			division.stop();
-			return division.tomo();
+			timeDivide= division.tomo();
+		}
+		public void timeQuickSort(int e[]){
+			timeQuickSort=tiempoQuickSort(e, 0,e.length-1 );
 		}
 
 	}

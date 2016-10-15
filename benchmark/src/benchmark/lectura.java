@@ -13,9 +13,10 @@ public class lectura {
 	double doubles[]=new double[1000000];
 	double quickDoubles[]=new double [1000000];
 	tiempo lectura = new tiempo();
-	String lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles;
+	double lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles;
+	File archivo = new File("C://array");
 	public int[] leerEnteros(){
-		File archivo = new File("D:\\DANIEL\\Documents\\Estudios\\Universidad Nacional\\Algoritmos y Programación\\Programación Orientada a Objetos\\Eclipse Workspace\\datos\\ej1");
+		
 		try {
 				fr = new FileInputStream(archivo);
 				or = new ObjectInputStream(fr);
@@ -46,7 +47,7 @@ public class lectura {
 		return enteros;
 	}
 	public int[] leerQuickEnteros(){
-		File archivo = new File("D:\\DANIEL\\Documents\\Estudios\\Universidad Nacional\\Algoritmos y Programación\\Programación Orientada a Objetos\\Eclipse Workspace\\datos\\ej1");
+		
 		try {
 				fr = new FileInputStream(archivo);
 				or = new ObjectInputStream(fr);
@@ -77,7 +78,7 @@ public class lectura {
 		return quickEnteros;
 	}
 	public double[] leerDoubles(){
-		File archivo = new File("D:\\DANIEL\\Documents\\Estudios\\Universidad Nacional\\Algoritmos y Programación\\Programación Orientada a Objetos\\Eclipse Workspace\\datos\\ej1");
+
 		try {
 				fr = new FileInputStream(archivo);
 				or = new ObjectInputStream(fr);
@@ -108,7 +109,7 @@ public class lectura {
 		return doubles;
 	}
 	public double[] leerQuickDoubles(){
-		File archivo = new File("D:\\DANIEL\\Documents\\Estudios\\Universidad Nacional\\Algoritmos y Programación\\Programación Orientada a Objetos\\Eclipse Workspace\\datos\\ej1");
+
 		try {
 				fr = new FileInputStream(archivo);
 				or = new ObjectInputStream(fr);
