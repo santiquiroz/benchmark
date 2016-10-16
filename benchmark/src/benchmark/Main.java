@@ -19,10 +19,10 @@ public class Main {
 		lectura cargaLectura = new lectura();
 		creadorArreglos creador = new creadorArreglos();
 		System.out.println("bienvenido a el futuro de los benchmarks :v");
-		boolean b=false;String accion;
+		boolean b=false;int accion;
 	do{ 
-		accion=entrada.next();
-		if(accion.equals("1")){
+		accion=entrada.nextInt();
+		if(accion==1){
 		//creacion de arreglos
 	
 		creador.crearTodos();
@@ -41,8 +41,20 @@ public class Main {
 		ArregloDoubles=cargaLectura.getArrayDouble();
 		ArregloOrdenadoEnteros=cargaLectura.getArrayEnteroOrdenado();
 		ArregloOrdenadoDoubles=cargaLectura.getArrayDoubleOrdenado();
+		
+		//operaciones 
+		operacionesDouble.timeQuickSort(ArregloOrdenadoDoubles);
+		operacionesEntero.timeQuickSort(ArregloOrdenadoEnteros);
+		operacionesDouble.procesador(ArregloDoubles);
+		operacionesEntero.sacarTiempo(ArregloEnteros);
+		
+		//impresion de resultados
+		System.out.println("tiempo de escritura: "+cargaLectura.getTiempoGuardadoTodos()+" milisegundos");
+		
+		
+		
 		}
-		else if(accion.equals("2")){
+		else if(accion==2){
 			cargaLectura.eliminar();
 			b=true;
 		}

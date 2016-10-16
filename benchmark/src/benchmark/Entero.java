@@ -4,7 +4,6 @@ public class Entero extends QuickSort{
 		
 		public void sacarTiempo(int a []) {
 			
-			 timeQuickSort(a);
 			 sumaEntero(a);
 			 restaEntero(a);
 			 multiplicacionEntero(a);
@@ -55,10 +54,28 @@ public class Entero extends QuickSort{
 			timeDivide= division.tomo();
 		}
 		public void timeQuickSort(int e[]){
-			timeQuickSort=tiempoQuickSort(e, 0,e.length-1 );
+			timeQuickSort=tiempoQuickSort(e );
 		}
 		
 		//obtener tiempos 
+		public double getTimeQuickSort(){//este nos sirve es para la ram
+			return timeQuickSort;
+		}
+		public double getTimeSuma(){
+			return timePlus;
+		}
+		public double getTimeResta(){
+			return timeMinus;
+		}
+		public double getTimeMultiplicacion(){
+			return timeMultiply;
+		}
+		public double getTimeDivision(){
+			return timeDivide;
+		}
+		public double getTotalTime(){//tener en cuenta que solo estamos tomando los del proceso en la cpu
+			return timePlus+timeMinus+timeMultiply+timeDivide;
+		}
 
 	}
 

@@ -303,6 +303,7 @@ lectura.reset();
 	}
 	//guardar todos 
 	public void guardarTodos(int enteros[],int enterosOrdenados[],double doubles[],double doublesOrdenados[]){
+		
 		todos.start();
 		guardarDoubles(doubles);
 		guardarQuickDoubles(doublesOrdenados);
@@ -341,7 +342,7 @@ lectura.reset();
 		return guardadoDoublesOrdenados;
 	}
 	public double getTiempoGuardadoTodos(){
-		return tiempoGuardarTodos;
+		return guardadoEnteros+guardadoEnterosOrdenados+guardadoDoubles+guardadoDoublesOrdenados;
 	}
 	//obtener arreglos 
 	public double[] getArrayDouble(){
@@ -363,7 +364,7 @@ lectura.reset();
 	//borrar todos (carpeta que los contiene)
 	public void eliminar(){
 		
-		if((carpeta.exists())&&(carpeta.isDirectory())){
+		if((carpeta.exists())){
 			carpeta.delete();
 			
 		}

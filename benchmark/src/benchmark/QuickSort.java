@@ -1,17 +1,17 @@
 package benchmark;
 
 public class QuickSort {
-	public double tiempoQuickSort(double A[], int izq, int der){
+	public double tiempoQuickSort(double A[]){
 		tiempo bench = new tiempo();
 		bench.start();
-		quicksort(A,izq,der);
+		quicksort(A,0,A.length-1);
 		bench.stop();
 		return bench.tomo();
 	}
-	public double tiempoQuickSort(int A[], int izq, int der){
+	public double tiempoQuickSort(int A[]){
 		tiempo bench = new tiempo();
 		bench.start();
-		quicksort(A,izq,der);
+		quicksort(A,0,A.length-1);
 		bench.stop();
 		return bench.tomo();
 	}
