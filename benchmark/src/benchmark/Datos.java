@@ -117,4 +117,8 @@ public class Datos {
 		return timeLectura[i];
 	}
 	
+	public int getTestsRealizados() {
+		return free;
+	}
+	
 }

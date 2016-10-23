@@ -11,18 +11,17 @@ import benchmark.Tiempo;
 
 public class Main {
 	
+	private static Datos datos = new Datos();
+	
 	public static void main(String[] args) {
 		
 		Scanner entrada = new Scanner(System.in);
 		
-		Double operacionesDouble = new Double();
-		Entero operacionesEntero = new Entero();
-		int ArregloEnteros[]; int ArregloOrdenadoEnteros[];
-		double ArregloDoubles[]; double ArregloOrdenadoDoubles[];
-		Lectura cargaLectura = new Lectura();
-		CreadorArreglos creadorArreglos = new CreadorArreglos();
+		datos = GestorDatos.leerDatos();
+		if ( datos == null ) {
+			GestorDatos.guardarDatos(datos);
+		}
 		boolean b = false; int accion;
-		
 		
 		System.out.println("WELCOME TO THE FUTURE OF BENCHMARKS :v");
 		
@@ -33,7 +32,17 @@ public class Main {
 			System.out.println("");
 			accion = entrada.nextInt();
 			
-			if(accion==1){
+			if ( accion == 1 ) {
+				
+				CreadorArreglos creadorArreglos = new CreadorArreglos();
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				//Creación de arreglos
 				creadorArreglos.crearTodos();
@@ -66,7 +75,7 @@ public class Main {
 				b=true;
 			}
 			
-		}while(b==false);
+		}while ( b == false );
 			
 	}
 	

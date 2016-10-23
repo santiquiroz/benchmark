@@ -11,7 +11,6 @@ public class Double {
 	private double timeDivide;
 	private double timeAcos;
 	
-	
 	public Double(double a []) {
 		this.a = a;
 		procesador(this.a);

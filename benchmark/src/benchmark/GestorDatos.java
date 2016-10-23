@@ -11,9 +11,13 @@ import java.io.ObjectOutputStream;
 //Código robado de SuPropiedadRaiz, copyright by Santiago, pirateado by Juancho  :v
 public class GestorDatos {
 	
-private static File archivo = new File("datos");
+	private static File archivo = new File("datos");
+	private static Tiempo tiempo = new Tiempo();
+	private static double tiempoLectura;
+	private static double tiempoGuardado;
 	
 	public static Datos leerDatos() {
+		tiempo.start();
 		Datos datos = null;
 		FileInputStream fr = null;
 		ObjectInputStream or = null;
@@ -39,10 +43,14 @@ private static File archivo = new File("datos");
 				System.out.println("Error: " + e.toString());
 			}
 		}
+		tiempo.stop();
+		tiempoLectura = tiempo.tomo();
+		tiempo.reset();
 		return datos;
 	}
 	
 	public static void guardarDatos(Datos data) {
+		tiempo.start();
 		FileOutputStream fw = null;
 		ObjectOutputStream ow = null;
 		try {
@@ -63,6 +71,17 @@ private static File archivo = new File("datos");
 				System.out.println("Error: " + e.toString());
 			}
 		}
+		tiempo.stop();
+		tiempoGuardado = tiempo.tomo();
+		tiempo.reset();
+	}
+	
+	public double getTiempoLectura() {
+		return tiempoLectura;
+	}
+	
+	public double getTiempoGuardado() {
+		return tiempoGuardado;
 	}
 	
 }
