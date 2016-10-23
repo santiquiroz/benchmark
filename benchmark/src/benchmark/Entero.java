@@ -16,6 +16,7 @@ public class Entero extends QuickSort{
 		 restaEntero(a);
 		 multiplicacionEntero(a);
 		 divisionEnteros(a);
+		 quickSortEnteros(a);
 	}
 	
 	//Suma
@@ -71,8 +72,10 @@ public class Entero extends QuickSort{
 		timeDivide= division.tomo();
 	}
 	
-	public void timeQuickSort(int e[]){
-		timeQuickSort=tiempoQuickSort(e);
+	//Ordenamiento
+	public void quickSortEnteros(int e[]){
+		QuickSort quickSort = new QuickSort(e);
+		timeQuickSort = quickSort.getTiempoQuickSort();
 	}
 	
 	//Obtener tiempos 

@@ -5,104 +5,107 @@ import benchmark.Tiempo;
 
 public class CreadorArreglos {
 		
-		private int enteros[]   = new  int  [1000000 ];
-		private double dobles[] = new double[1000000 ];
-		private int enterosOrdenados[]   = new  int  [1000000 ];
-		private double doblesOrdenados[] = new double[1000000 ];
+		private int enteros[]   = new  int[1000000];
+		private double dobles[] = new double[1000000];
+		private int enterosOrdenados[]   = new  int[1000000];
+		private double doblesOrdenados[] = new double[1000000];
 		private int s;
 		private int i;
 		private double z;
 		private double u;
-		private Tiempo tiempoTodos= new Tiempo();
-		private Tiempo tiempoEnterosOrdenados = new Tiempo();
-		private Tiempo tiempoDoublesOrdenados = new Tiempo();
-		private Tiempo tiempoEnteros = new Tiempo();
-		private Tiempo tiempoDoubles = new Tiempo();
+		private Tiempo tiempo = new Tiempo();
+		private double tiempoEnterosOrdenados;
+		private double tiempoDoublesOrdenados;
+		private double tiempoEnteros;
+		private double tiempoDoubles;
+		private double tiempoTodos;
 		
 		public CreadorArreglos() {
-			arrayEnteros();
-			arrayDoubles();
-			arrayEnterosOrdenados();
-			arrayDoublesOrdenados();
 			crearTodos();
 		}
 		
 		public void arrayEnterosOrdenados() {
 			i = 1;
-			tiempoEnterosOrdenados.reset();
-			tiempoEnterosOrdenados.start();
+			tiempo.start();
 			for (s=999999; s>0 ; s--) {
 				enterosOrdenados[s] = i;
 				i= i+1;
 			}
-			tiempoEnterosOrdenados.stop();
+			tiempo.stop();
+			tiempoEnterosOrdenados = tiempo.tomo();
+			tiempo.reset();
 		}
 		
 		public void arrayDoublesOrdenados() {
 			i = 1;
-			tiempoDoublesOrdenados.reset();
-			tiempoDoublesOrdenados.start();
+			tiempo.start();
 			for (s=999999; s>0 ; s--) {
 				doblesOrdenados[s] = i + 0.5;
 				i= i+1;
 			}
-			tiempoDoublesOrdenados.stop();
+			tiempo.stop();
+			tiempoDoublesOrdenados = tiempo.tomo();
+			tiempo.reset();
 		}
 		
 		public void arrayEnteros() {
 			u = 0;
-			tiempoEnteros.reset();
-			tiempoEnteros.start();
+			tiempo.start();
 			for (s=0; s<1000000 ; s++){
 				enteros[s] = (int)(Math.random() * (1000000  - 1) + 1);
 			}
 			for (s=0; s<1000000 ; s++){
 				u = u + enteros[s];
 			}
-			tiempoEnteros.stop();
+			tiempo.stop();
+			tiempoEnteros = tiempo.tomo();
+			tiempo.reset();
 		}
 		
 		public void arrayDoubles() {
 			z = 0;
-			tiempoDoubles.reset();
-			tiempoDoubles.start();
+			tiempo.start();
 			for (s=0; s<1000000 ; s++){
 				dobles[s]  = (Math.random() * (1000000  - 1) + 1);
 			}
 			for (s=0; s<1000000 ; s++){
 				z = z + dobles[s];
 			}
-			tiempoDoubles.stop();
+			tiempo.stop();
+			tiempoDoubles = tiempo.tomo();
+			tiempo.reset();
 		}
 		
 		public void crearTodos(){
-			tiempoTodos.start();
+			tiempo.start();
 			arrayDoubles();
 			arrayEnteros();
 			arrayEnterosOrdenados();
 			arrayDoublesOrdenados();
-			tiempoTodos.stop();
+			tiempoTodos = tiempo.tomo();
+			tiempo.stop();
+			tiempo.reset();
 		}
 		
 		//Devolver el tiempo que se demoró 
 		public double getTiempoEnterosOrdenados() {
-			return tiempoEnterosOrdenados.tomo();
+			return tiempoEnterosOrdenados;
 		}
 		
 		public double getTiempoDoublesOrdenados() {
-			return tiempoDoublesOrdenados.tomo();
+			return tiempoDoublesOrdenados;
 		}
 		
 		public double getTiempoEnteros() {
-			return tiempoEnteros.tomo();
+			return tiempoEnteros;
 		}
 		
 		public double getTiempoDoubles() {
-			return tiempoDoubles.tomo();
+			return tiempoDoubles;
 		}
 		
 		public double getTiempoTodos(){
-			return tiempoTodos.tomo();
+			return tiempoTodos;
 		}
 		
 		//Devolver los arreglos

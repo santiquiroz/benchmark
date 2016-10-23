@@ -10,9 +10,7 @@ public class Double {
 	private double timeMultiply;
 	private double timeDivide;
 	private double timeAcos;
-	private double X;
-	private Tiempo time = new Tiempo();
-	private QuickSort quickSort = new QuickSort();
+	
 	
 	public Double(double a []) {
 		this.a = a;
@@ -25,54 +23,63 @@ public class Double {
 		timeMultiply(a);
 		timeDivide(a);
 		timeAcos(a);
+		timeQuickSort(a);
 	}
 	
 	public void timeQuickSort(double a[]) {
-		timeQuickSort= quickSort.tiempoQuickSort(a);
+		QuickSort quickSort = new QuickSort(a);
+		timeQuickSort = quickSort.getTiempoQuickSort();
 	}
 	
 	public void timePlus(double a[]) {
-		X = a[0];
+		Tiempo time = new Tiempo();
+		double X = a[0];
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
 			X = X + a[i];
 		}
-		time.stop(); timePlus= time.tomo();
+		time.stop(); timePlus= time.tomo(); time.reset();
 	}
 	
 	public void timeMinus( double a[]) {
-		X = a[0];
+		Tiempo time = new Tiempo();
+		double X = a[0];
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
 			X = X - a[i];
 		}
-		time.stop(); timeMinus=time.tomo();
+		time.stop(); timeMinus=time.tomo(); time.reset();
 	}
 	
 	public void timeMultiply(double a[]) {
-		X = a[0];
+		Tiempo time = new Tiempo();
+		double X = a[0];
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
 			X = X * a[i];
 		}
-		time.stop(); timeMultiply =time.tomo();
+		time.stop(); timeMultiply =time.tomo(); time.reset();
 	}
 	
 	public void timeDivide( double a[]) {
-		X = a[0];
+		Tiempo time = new Tiempo();
+		double X = a[0];
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
 			X = X / a[i];
 		}
-		time.stop(); timeDivide= time.tomo();
+		time.stop(); timeDivide= time.tomo(); time.reset();
 	}
 	
 	public void timeAcos( double a[]) {
+		Tiempo time = new Tiempo();
 		time.reset(); time.start();
+		@SuppressWarnings("unused")
+		double X;
 		for (int i = 1; i < a.length; i++) {
 			X = Math.acos(a[i]);
 		}
-		time.stop(); timeAcos= time.tomo();
+		time.stop(); timeAcos= time.tomo(); time.reset();
 	}
 	
 	//Obtener los tiempos
