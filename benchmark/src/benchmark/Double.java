@@ -3,6 +3,7 @@ package benchmark;
 
 public class Double {
 	
+	private double a [];
 	private double timeQuickSort;
 	private double timePlus;
 	private double timeMinus;
@@ -13,12 +14,17 @@ public class Double {
 	private Tiempo time = new Tiempo();
 	private QuickSort quickSort = new QuickSort();
 	
+	public Double(double a []) {
+		this.a = a;
+		procesador(this.a);
+	}
+	
 	public void procesador(double a []) { 
 		timePlus(a);
-		 timeMinus(a);
-		 timeMultiply(a);
-		 timeDivide(a);
-		 timeAcos(a);
+		timeMinus(a);
+		timeMultiply(a);
+		timeDivide(a);
+		timeAcos(a);
 	}
 	
 	public void timeQuickSort(double a[]) {
@@ -35,7 +41,6 @@ public class Double {
 	}
 	
 	public void timeMinus( double a[]) {
-		
 		X = a[0];
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
@@ -45,7 +50,6 @@ public class Double {
 	}
 	
 	public void timeMultiply(double a[]) {
-		
 		X = a[0];
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
@@ -64,7 +68,6 @@ public class Double {
 	}
 	
 	public void timeAcos( double a[]) {
-		
 		time.reset(); time.start();
 		for (int i = 1; i < a.length; i++) {
 			X = Math.acos(a[i]);
@@ -99,6 +102,10 @@ public class Double {
 	
 	public double getTotalTime(){		//Tener en cuenta que sólo estamos tomando los del proceso en la CPU
 		return timeAcos+timePlus+timeMinus+timeMultiply+timeDivide;
+	}
+	
+	public double[] getArray() {
+		return a;
 	}
 	
 }

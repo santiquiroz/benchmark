@@ -3,9 +3,15 @@ package benchmark;
 
 public class Entero extends QuickSort{
 	
+	private int a [];
 	private double timeDivide,timeMinus,timeMultiply,timePlus,timeQuickSort; 
 	
-	public void sacarTiempo(int a []) {
+	public Entero(int a []) {
+		this.a = a;
+		procesador(this.a);
+	}
+	
+	public void procesador(int a []) {
 		 sumaEntero(a);
 		 restaEntero(a);
 		 multiplicacionEntero(a);
@@ -14,8 +20,8 @@ public class Entero extends QuickSort{
 	
 	//Suma
 	public void sumaEntero (int enteros[]){ 
-		
 		Tiempo suma = new Tiempo();
+		@SuppressWarnings("unused")
 		int a=0;
 		suma.start();
 		for(int i =0;i<(enteros.length);i++){
@@ -27,8 +33,8 @@ public class Entero extends QuickSort{
 	
 	//Resta
 	public void restaEntero(int enteros[]){
-		
 		Tiempo resta = new Tiempo();
+		@SuppressWarnings("unused")
 		int b=0;
 		resta.start();
 		for(int i=0;i<=enteros.length;i++){
@@ -42,6 +48,7 @@ public class Entero extends QuickSort{
 	public void multiplicacionEntero(int enteros[]){
 		
 		Tiempo multiplicacion =new Tiempo();
+		@SuppressWarnings("unused")
 		int c=enteros[0];
 		multiplicacion.start();
 		for(int i=1 ;i<=enteros.length;i++){
@@ -54,6 +61,7 @@ public class Entero extends QuickSort{
 	//Division
 	public void divisionEnteros(int enteros[]){
 		Tiempo division = new Tiempo();
+		@SuppressWarnings("unused")
 		int d = enteros[0] ;
 		division.start();
 		for ( int i=1; i<=enteros.length;i++){
@@ -91,6 +99,10 @@ public class Entero extends QuickSort{
 	public double getTotalTime(){	//Tener en cuenta que solo estamos tomando los del proceso en la cpu
 		return timePlus+timeMinus+timeMultiply+timeDivide;
 	}
-
+	
+	public int [] getArray() {
+		return a;
+	}
+	
 }
 

@@ -16,13 +16,8 @@ public class lectura{
 	private int quickEnteros[]=new int [1000000];
 	private double doubles[]=new double[1000000];
 	private double quickDoubles[]=new double [1000000];
-	private double lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles;
-	private double guardadoDoubles;
-	private double guardadoEnteros;
-	private double guardadoDoublesOrdenados;
-	private double tiempoLeerTodos;
-	private double tiempoGuardarTodos;
-	private double guardadoEnterosOrdenados;
+	private double lecturaEnteros, lecturaQuickEnteros,  lecturaDoubles ,lecturaQuickDoubles, tiempoLeerTodosArreglos;
+	private double guardadoDoubles, guardadoEnteros, guardadoDoublesOrdenados, tiempoGuardarTodosArreglos, guardadoEnterosOrdenados;
 	
 	Tiempo lectura = new Tiempo();
 	Tiempo todos= new Tiempo();
@@ -32,6 +27,7 @@ public class lectura{
 	File arrayEnterosOrdenados = new File("C:\\temp\\arrayEnterosOrdenados.txt");
 	File arrayDoublesOrdenados = new File("C:\\temp\\arrayDoublesOrdenados.txt");
 	
+	//Leer arreglos
 	public int[] leerEnteros(){
 		arrayEnteros.mkdirs();
 		lectura.start();
@@ -281,26 +277,26 @@ public class lectura{
 		lectura.reset();
 	}
 	
-	//Leer todos 
-	public void leerTodos(){
+	//Leer todos los arreglos
+	public void leerTodosArreglos(){
 		todos.start();
 		leerDoubles();
 		leerEnteros();
 		leerQuickDoubles();
 		leerQuickDoubles();
 		todos.stop();
-		tiempoLeerTodos=todos.tomo();
+		tiempoLeerTodosArreglos=todos.tomo();
 	}
 	
-	//Guardar todos 
-	public void guardarTodos(int enteros[],int enterosOrdenados[],double doubles[],double doublesOrdenados[]){
+	//Guardar todos los arreglos
+	public void guardarTodosArreglos(int enteros[],int enterosOrdenados[],double doubles[],double doublesOrdenados[]){
 		todos.start();
 		guardarDoubles(doubles);
 		guardarQuickDoubles(doublesOrdenados);
 		guardarEnteros(enteros);
 		guardarQuickEnteros(enterosOrdenados);
 		todos.stop();
-		tiempoGuardarTodos=todos.tomo();
+		tiempoGuardarTodosArreglos=todos.tomo();
 	}
 	
 	//Obtener los tiempos de lectura y guardado
@@ -320,8 +316,8 @@ public class lectura{
 		return lecturaQuickDoubles;
 	}
 	
-	public double getTiempoLecturaTodos(){
-		return tiempoLeerTodos;
+	public double getTiempoLecturaTodosArreglos(){
+		return tiempoLeerTodosArreglos;
 	}
 	
 	public double getTiempoGuardadoEnteros(){
@@ -340,8 +336,8 @@ public class lectura{
 		return guardadoDoublesOrdenados;
 	}
 	
-	public double getTiempoGuardadoTodos(){
-		return guardadoEnteros+guardadoEnterosOrdenados+guardadoDoubles+guardadoDoublesOrdenados;
+	public double getTiempoGuardadoTodosArreglos(){
+		return tiempoGuardarTodosArreglos;
 	}
 	
 	//Obtener arreglos 

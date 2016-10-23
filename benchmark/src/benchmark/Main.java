@@ -17,13 +17,12 @@ public class Main {
 		
 		Double operacionesDouble = new Double();
 		Entero operacionesEntero = new Entero();
-		int ArregloEnteros[]=new int [1000000];
-		int ArregloOrdenadoEnteros[]=new int [1000000];
-		double ArregloDoubles[]=new double[1000000];
-		double ArregloOrdenadoDoubles[]=new double [1000000];
-		lectura cargaLectura = new lectura();
-		creadorArreglos creador = new creadorArreglos();
-		boolean b=false;int accion;
+		int ArregloEnteros[]; int ArregloOrdenadoEnteros[];
+		double ArregloDoubles[]; double ArregloOrdenadoDoubles[];
+		Lectura cargaLectura = new Lectura();
+		CreadorArreglos creadorArreglos = new CreadorArreglos();
+		boolean b = false; int accion;
+		
 		
 		System.out.println("WELCOME TO THE FUTURE OF BENCHMARKS :v");
 		
@@ -32,34 +31,34 @@ public class Main {
 			System.out.println("1. Execute benchmark test");
 			System.out.println("2. ¡Go out of here!");
 			System.out.println("");
-			accion=entrada.nextInt();
+			accion = entrada.nextInt();
 			
 			if(accion==1){
 				
-				//creacion de arreglos
-				creador.crearTodos();
-				ArregloDoubles=creador.getArrayDouble();
-				ArregloEnteros=creador.getArrayEnteros();
-				ArregloOrdenadoDoubles=creador.getArrayDoubleOrdenado();
-				ArregloOrdenadoEnteros=creador.getArrayEnterosOrdenados();
+				//Creación de arreglos
+				creadorArreglos.crearTodos();
+				ArregloDoubles=creadorArreglos.getArrayDouble();
+				ArregloEnteros=creadorArreglos.getArrayEnteros();
+				ArregloOrdenadoDoubles=creadorArreglos.getArrayDoubleOrdenado();
+				ArregloOrdenadoEnteros=creadorArreglos.getArrayEnterosOrdenados();
 				
-				//guardado
+				//Guardado
 				cargaLectura.guardarTodos(ArregloEnteros,ArregloOrdenadoEnteros,ArregloDoubles,ArregloOrdenadoDoubles);
 				
-				//lectura
+				//Lectura
 				cargaLectura.leerTodos();
 				ArregloEnteros=cargaLectura.getArrayEntero();
 				ArregloDoubles=cargaLectura.getArrayDouble();
 				ArregloOrdenadoEnteros=cargaLectura.getArrayEnteroOrdenado();
 				ArregloOrdenadoDoubles=cargaLectura.getArrayDoubleOrdenado();
 				
-				//operaciones 
+				//Operaciones 
 				operacionesDouble.timeQuickSort(ArregloOrdenadoDoubles);
 				operacionesEntero.timeQuickSort(ArregloOrdenadoEnteros);
 				operacionesDouble.procesador(ArregloDoubles);
 				operacionesEntero.sacarTiempo(ArregloEnteros);
 				
-				//impresion de resultados
+				//Impresión de resultados
 				System.out.println("tiempo de escritura: "+cargaLectura.getTiempoGuardadoTodos()+" milisegundos");
 				
 			}else if(accion==2){
