@@ -3,7 +3,7 @@ package benchmark;
 
 import benchmark.Tiempo;
 
-public class creadorArreglos {
+public class CreadorArreglos {
 		
 		private int enteros[]   = new  int  [1000000 ];
 		private double dobles[] = new double[1000000 ];
@@ -18,6 +18,14 @@ public class creadorArreglos {
 		private Tiempo tiempoDoublesOrdenados = new Tiempo();
 		private Tiempo tiempoEnteros = new Tiempo();
 		private Tiempo tiempoDoubles = new Tiempo();
+		
+		public CreadorArreglos() {
+			arrayEnteros();
+			arrayDoubles();
+			arrayEnterosOrdenados();
+			arrayDoublesOrdenados();
+			crearTodos();
+		}
 		
 		public void arrayEnterosOrdenados() {
 			i = 1;
