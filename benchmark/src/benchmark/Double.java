@@ -1,3 +1,4 @@
+
 package benchmark;
 
 public class Double {
@@ -9,7 +10,7 @@ public class Double {
 	private double timeDivide;
 	private double timeAcos;
 	private double X;
-	private tiempo time = new tiempo();
+	private Tiempo time = new Tiempo();
 	private QuickSort quickSort = new QuickSort();
 	
 	public void procesador(double a []) { 
@@ -71,26 +72,33 @@ public class Double {
 		time.stop(); timeAcos= time.tomo();
 	}
 	
-	//obtener los tiempos
-	public double getTimeQuickSort(){//este nos sirve es para la ram
+	//Obtener los tiempos
+	public double getTimeQuickSort(){ 	//Éste nos sirve es para la RAM
 		return timeQuickSort;
 	}
+	
 	public double getTimeCoseno(){
 		return timeAcos;
 	}
+	
 	public double getTimeSuma(){
 		return timePlus;
 	}
+	
 	public double getTimeResta(){
 		return timeMinus;
 	}
+	
 	public double getTimeMultiplicacion(){
 		return timeMultiply;
 	}
+	
 	public double getTimeDivision(){
 		return timeDivide;
 	}
-	public double getTotalTime(){//tener en cuenta que solo estamos tomando los del proceso en la cpu
+	
+	public double getTotalTime(){		//Tener en cuenta que sólo estamos tomando los del proceso en la CPU
 		return timeAcos+timePlus+timeMinus+timeMultiply+timeDivide;
 	}
+	
 }

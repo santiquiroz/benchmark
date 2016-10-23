@@ -1,15 +1,20 @@
+
 package benchmark;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-import benchmark.tiempo;
+import benchmark.Tiempo;
+
 public class Main {
 	
 	public static void main(String[] args) {
+		
 		Scanner entrada = new Scanner(System.in);
+		
 		Double operacionesDouble = new Double();
 		Entero operacionesEntero = new Entero();
 		int ArregloEnteros[]=new int [1000000];
@@ -18,51 +23,52 @@ public class Main {
 		double ArregloOrdenadoDoubles[]=new double [1000000];
 		lectura cargaLectura = new lectura();
 		creadorArreglos creador = new creadorArreglos();
-		System.out.println("bienvenido a el futuro de los benchmarks :v");
 		boolean b=false;int accion;
-	do{ 
-		accion=entrada.nextInt();
-		if(accion==1){
-		//creacion de arreglos
-	
-		creador.crearTodos();
-		ArregloDoubles=creador.getArrayDouble();
-		ArregloEnteros=creador.getArrayEnteros();
-		ArregloOrdenadoDoubles=creador.getArrayDoubleOrdenado();
-		ArregloOrdenadoEnteros=creador.getArrayEnterosOrdenados();
-		//guardado
-		cargaLectura.guardarTodos(ArregloEnteros,ArregloOrdenadoEnteros,ArregloDoubles,ArregloOrdenadoDoubles);
 		
-		//lectura
+		System.out.println("WELCOME TO THE FUTURE OF BENCHMARKS :v");
 		
-		cargaLectura.leerTodos();
-		
-		ArregloEnteros=cargaLectura.getArrayEntero();
-		ArregloDoubles=cargaLectura.getArrayDouble();
-		ArregloOrdenadoEnteros=cargaLectura.getArrayEnteroOrdenado();
-		ArregloOrdenadoDoubles=cargaLectura.getArrayDoubleOrdenado();
-		
-		//operaciones 
-		operacionesDouble.timeQuickSort(ArregloOrdenadoDoubles);
-		operacionesEntero.timeQuickSort(ArregloOrdenadoEnteros);
-		operacionesDouble.procesador(ArregloDoubles);
-		operacionesEntero.sacarTiempo(ArregloEnteros);
-		
-		//impresion de resultados
-		System.out.println("tiempo de escritura: "+cargaLectura.getTiempoGuardadoTodos()+" milisegundos");
-		
-		
-		
-		}
-		else if(accion==2){
-			cargaLectura.eliminar();
-			b=true;
-		}
-		
-	}while(b==false);
-		
-		
+		do{ 
+			System.out.println("===== CONSOLE MENU ====");
+			System.out.println("1. Execute benchmark test");
+			System.out.println("2. ¡Go out of here!");
+			System.out.println("");
+			accion=entrada.nextInt();
+			
+			if(accion==1){
+				
+				//creacion de arreglos
+				creador.crearTodos();
+				ArregloDoubles=creador.getArrayDouble();
+				ArregloEnteros=creador.getArrayEnteros();
+				ArregloOrdenadoDoubles=creador.getArrayDoubleOrdenado();
+				ArregloOrdenadoEnteros=creador.getArrayEnterosOrdenados();
+				
+				//guardado
+				cargaLectura.guardarTodos(ArregloEnteros,ArregloOrdenadoEnteros,ArregloDoubles,ArregloOrdenadoDoubles);
+				
+				//lectura
+				cargaLectura.leerTodos();
+				ArregloEnteros=cargaLectura.getArrayEntero();
+				ArregloDoubles=cargaLectura.getArrayDouble();
+				ArregloOrdenadoEnteros=cargaLectura.getArrayEnteroOrdenado();
+				ArregloOrdenadoDoubles=cargaLectura.getArrayDoubleOrdenado();
+				
+				//operaciones 
+				operacionesDouble.timeQuickSort(ArregloOrdenadoDoubles);
+				operacionesEntero.timeQuickSort(ArregloOrdenadoEnteros);
+				operacionesDouble.procesador(ArregloDoubles);
+				operacionesEntero.sacarTiempo(ArregloEnteros);
+				
+				//impresion de resultados
+				System.out.println("tiempo de escritura: "+cargaLectura.getTiempoGuardadoTodos()+" milisegundos");
+				
+			}else if(accion==2){
+				cargaLectura.eliminar();
+				b=true;
+			}
+			
+		}while(b==false);
+			
 	}
+	
 }
-
-

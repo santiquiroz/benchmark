@@ -1,21 +1,25 @@
+
 package benchmark;
 
 public class QuickSort {
+	
 	public double tiempoQuickSort(double A[]){
-		tiempo bench = new tiempo();
+		Tiempo bench = new Tiempo();
 		bench.start();
 		quicksort(A,0,A.length-1);
 		bench.stop();
 		return bench.tomo();
 	}
+	
 	public double tiempoQuickSort(int A[]){
-		tiempo bench = new tiempo();
+		Tiempo bench = new Tiempo();
 		bench.start();
 		quicksort(A,0,A.length-1);
 		bench.stop();
 		return bench.tomo();
 	}
-	public  void quicksort (double A[], int izq, int der) {
+	
+	public void quicksort (double A[], int izq, int der) {
 		  
 		  double pivote=A[izq]; // tomamos primer elemento como pivote
 		  int i=izq; // i realiza la búsqueda de izquierda a derecha
@@ -37,8 +41,10 @@ public class QuickSort {
 		      quicksort(A,izq,j-1); // ordenamos subarray izquierdo
 		   if(j+1 <der)
 		      quicksort(A,j+1,der); // ordenamos subarray derecho
+		   
 		}
-	public  void quicksort (int A[], int izq, int der) {
+	
+	public void quicksort (int A[], int izq, int der) {
 
 		  int pivote=A[izq]; // tomamos primer elemento como pivote
 		  int i=izq; // i realiza la búsqueda de izquierda a derecha
@@ -60,5 +66,7 @@ public class QuickSort {
 		      quicksort(A,izq,j-1); // ordenamos subarray izquierdo
 		   if(j+1 <der)
 		      quicksort(A,j+1,der); // ordenamos subarray derecho
+		   
 		}
+	
 }

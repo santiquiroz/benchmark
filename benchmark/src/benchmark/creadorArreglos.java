@@ -1,5 +1,7 @@
+
 package benchmark;
-import benchmark.tiempo;
+
+import benchmark.Tiempo;
 
 public class creadorArreglos {
 		
@@ -11,11 +13,11 @@ public class creadorArreglos {
 		private int i;
 		private double z;
 		private double u;
-		public tiempo tiempoTodos= new tiempo();
-		public tiempo tiempoEnterosOrdenados = new tiempo();
-		public tiempo tiempoDoublesOrdenados = new tiempo();
-		public tiempo tiempoEnteros = new tiempo();
-		public tiempo tiempoDoubles = new tiempo();
+		private Tiempo tiempoTodos= new Tiempo();
+		private Tiempo tiempoEnterosOrdenados = new Tiempo();
+		private Tiempo tiempoDoublesOrdenados = new Tiempo();
+		private Tiempo tiempoEnteros = new Tiempo();
+		private Tiempo tiempoDoubles = new Tiempo();
 		
 		public void arrayEnterosOrdenados() {
 			i = 1;
@@ -64,6 +66,7 @@ public class creadorArreglos {
 			}
 			tiempoDoubles.stop();
 		}
+		
 		public void crearTodos(){
 			tiempoTodos.start();
 			arrayDoubles();
@@ -72,7 +75,8 @@ public class creadorArreglos {
 			arrayDoublesOrdenados();
 			tiempoTodos.stop();
 		}
-		//devolver el tiempo que se demoro 
+		
+		//Devolver el tiempo que se demoró 
 		public double getTiempoEnterosOrdenados() {
 			return tiempoEnterosOrdenados.tomo();
 		}
@@ -88,20 +92,24 @@ public class creadorArreglos {
 		public double getTiempoDoubles() {
 			return tiempoDoubles.tomo();
 		}
+		
 		public double getTiempoTodos(){
 			return tiempoTodos.tomo();
 		}
-		// devolver los arreglos
 		
+		//Devolver los arreglos
 		public int[] getArrayEnteros(){
 			return this.enteros;
 		}
+		
 		public int[] getArrayEnterosOrdenados(){
 			return this.enterosOrdenados;
 		}
+		
 		public double[] getArrayDouble(){
 			return this.dobles;
 		}
+		
 		public double[] getArrayDoubleOrdenado(){
 			return this.doblesOrdenados;
 		}
