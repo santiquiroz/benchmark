@@ -77,14 +77,15 @@ public class CreadorArreglos {
 		}
 		
 		public void crearTodos(){
-			tiempo.start();
+			Tiempo time = new Tiempo();
+			time.start();
 			arrayDoubles();
 			arrayEnteros();
 			arrayEnterosOrdenados();
 			arrayDoublesOrdenados();
-			tiempoTodos = tiempo.tomo();
-			tiempo.stop();
-			tiempo.reset();
+			tiempoTodos = time.tomo();
+			time.stop();
+			time.reset();
 		}
 		
 		//Devolver el tiempo que se demoró 
@@ -117,11 +118,11 @@ public class CreadorArreglos {
 			return this.enterosOrdenados;
 		}
 		
-		public double[] getArrayDouble(){
+		public double[] getArrayDoubles(){
 			return this.dobles;
 		}
 		
-		public double[] getArrayDoubleOrdenado(){
+		public double[] getArrayDoublesOrdenados(){
 			return this.doblesOrdenados;
 		}
 		

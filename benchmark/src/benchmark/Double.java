@@ -9,7 +9,7 @@ public class Double {
 	private double timeMinus;
 	private double timeMultiply;
 	private double timeDivide;
-	private double timeAcos;
+	private double timeAtan;
 	
 	public Double(double a []) {
 		this.a = a;
@@ -21,7 +21,7 @@ public class Double {
 		timeMinus(a);
 		timeMultiply(a);
 		timeDivide(a);
-		timeAcos(a);
+		timeAtan(a);
 		timeQuickSort(a);
 	}
 	
@@ -70,15 +70,15 @@ public class Double {
 		time.stop(); timeDivide= time.tomo(); time.reset();
 	}
 	
-	public void timeAcos( double a[]) {
+	public void timeAtan( double a[]) {
 		Tiempo time = new Tiempo();
 		time.reset(); time.start();
 		@SuppressWarnings("unused")
 		double X;
 		for (int i = 1; i < a.length; i++) {
-			X = Math.acos(a[i]);
+			X = Math.atan(a[i]);
 		}
-		time.stop(); timeAcos= time.tomo(); time.reset();
+		time.stop(); timeAtan= time.tomo(); time.reset();
 	}
 	
 	//Obtener los tiempos
@@ -86,8 +86,8 @@ public class Double {
 		return timeQuickSort;
 	}
 	
-	public double getTimeCoseno(){
-		return timeAcos;
+	public double getTimeAtan(){
+		return timeAtan;
 	}
 	
 	public double getTimeSuma(){
@@ -107,7 +107,7 @@ public class Double {
 	}
 	
 	public double getTotalTime(){		//Tener en cuenta que sólo estamos tomando los del proceso en la CPU
-		return timeAcos+timePlus+timeMinus+timeMultiply+timeDivide;
+		return timeAtan+timePlus+timeMinus+timeMultiply+timeDivide;
 	}
 	
 	public double[] getArray() {

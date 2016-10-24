@@ -38,7 +38,7 @@ public class Entero extends QuickSort{
 		@SuppressWarnings("unused")
 		int b=0;
 		resta.start();
-		for(int i=0;i<=enteros.length;i++){
+		for(int i=0;i<enteros.length;i++){
 			b-=enteros[i];
 		}
 		resta.stop();
@@ -52,7 +52,7 @@ public class Entero extends QuickSort{
 		@SuppressWarnings("unused")
 		int c=enteros[0];
 		multiplicacion.start();
-		for(int i=1 ;i<=enteros.length;i++){
+		for(int i=1 ;i<enteros.length;i++){
 			c*=enteros[i];
 		}
 		multiplicacion.stop();
@@ -65,7 +65,7 @@ public class Entero extends QuickSort{
 		@SuppressWarnings("unused")
 		int d = enteros[0] ;
 		division.start();
-		for ( int i=1; i<=enteros.length;i++){
+		for ( int i=1; i<enteros.length;i++){
 			d/=enteros[i];
 		}
 		division.stop();

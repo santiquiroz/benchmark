@@ -1,34 +1,41 @@
 
 package benchmark;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Datos {
+public class Datos implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<String> descripcion = new ArrayList<>();
 	private ArrayList<int []> enterosArray = new ArrayList<>();
 	private ArrayList<int []> enterosOrdenadosArray = new ArrayList<>();
 	private ArrayList<double []> doublesArray = new ArrayList<>();
 	private ArrayList<double []> doublesOrdenadosArray = new ArrayList<>();
-	private double [] timeQuickSortEnteros;
-	private double [] timePlusEnteros;
-	private double [] timeMinusEnteros;
-	private double [] timeMultiplyEnteros;
-	private double [] timeDivideEnteros;
-	private double [] timeQuickSortDoubles;
-	private double [] timePlusDoubles;
-	private double [] timeMinusDoubles;
-	private double [] timeMultiplyDoubles;
-	private double [] timeDivideDoubles;
-	private double [] timeAcosDoubles;
-	private double [] timeLectura;
+	private double [] timeQuickSortEnteros = new double[10000];
+	private double [] timePlusEnteros = new double[10000];
+	private double [] timeMinusEnteros = new double[10000];
+	private double [] timeMultiplyEnteros = new double[10000];
+	private double [] timeDivideEnteros = new double[10000];
+	private double [] timeQuickSortDoubles = new double[10000];
+	private double [] timePlusDoubles = new double[10000];
+	private double [] timeMinusDoubles = new double[10000];
+	private double [] timeMultiplyDoubles = new double[10000];
+	private double [] timeDivideDoubles = new double[10000];
+	private double [] timeAtanDoubles = new double[10000];
+	private double [] timeLectura = new double[10000];
+	private double [] timeGuardado = new double[10000];
 	private int free;
 	
 	public void addTest(String descripcion, int[] enterosArray, int[] enterosOrdenadosArray, double[] doublesArray,
 			double[] doublesOrdenadosArray, double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
 			double timeMultiplyEnteros, double timeDivideEnteros, double timeQuickSortDoubles, double timePlusDoubles, 
-			double timeMinusDoubles, double timeMultiplyDoubles, double timeDivideDoubles, double timeAcosDoubles, 
-			double timeLectura ) {
+			double timeMinusDoubles, double timeMultiplyDoubles, double timeDivideDoubles, double timeAtanDoubles, 
+			double timeLectura, double timeGuardado) {
 		this.descripcion.add(descripcion);
 		this.enterosArray.add(enterosArray);
 		this.enterosOrdenadosArray.add(enterosOrdenadosArray);
@@ -44,8 +51,9 @@ public class Datos {
 		this.timeMinusDoubles[free] = timeMinusDoubles;
 		this.timeMultiplyDoubles[free] = timeMultiplyDoubles;
 		this.timeDivideDoubles[free] = timeDivideDoubles;
-		this.timeAcosDoubles[free] = timeAcosDoubles;
+		this.timeAtanDoubles[free] = timeAtanDoubles;
 		this.timeLectura[free] = timeLectura;
+		this.timeGuardado[free] = timeGuardado;
 		free = free + 1;
 	}
 	
@@ -109,16 +117,24 @@ public class Datos {
 		return timeDivideDoubles[i];
 	}
 	
-	public double getTimeAcosDoubles(int i) {
-		return timeAcosDoubles[i];
+	public double getTimeAtanDoubles(int i) {
+		return timeAtanDoubles[i];
 	}
 	
 	public double getTimeLectura(int i) {
 		return timeLectura[i];
 	}
 	
-	public int getTestsRealizados() {
+	public double getTimeGuardado(int i) {
+		return timeGuardado[i];
+	}
+	
+	public int getMadeTests() {
 		return free;
+	}
+	
+	public void initalizeMadeTests() {
+		free = 0;
 	}
 	
 }

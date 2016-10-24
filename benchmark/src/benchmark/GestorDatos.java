@@ -30,7 +30,7 @@ public class GestorDatos {
 				
 			}
 		} catch(IOException e) {
-			System.out.println("Error: " + e.toString());
+			
 		} finally {
 			try {
 				if (or != null) {
