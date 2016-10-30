@@ -134,6 +134,31 @@ public class Main {
 				//cargaLectura.eliminar();
 				gestorDatos.guardarDatos(datos);
 				System.out.println("Your PC is going to die");
+				System.out.println("executing $hard-drive-rape.exe");
+				System.out.println("deleting System-32");
+				System.out.println("Get Hacked M8");
+				System.out.println("quieres salvar tu pc?");
+				input.next();System.out.println("");
+				System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");System.out.println("");
+				System.out.println("");
+				System.out.println("era mentiras gracias por probar el benchmark");
+				
 				b=true;
 			}
 		}while ( b == false );
