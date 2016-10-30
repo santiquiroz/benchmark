@@ -23,9 +23,9 @@ public class Entero extends QuickSort{
 	public void sumaEntero (int enteros[]){ 
 		Tiempo suma = new Tiempo();
 		@SuppressWarnings("unused")
-		int a=0;
+		int a=enteros[0];
 		suma.start();
-		for(int i =0;i<(enteros.length);i++){
+		for(int i =1;i<(enteros.length);i++){
 			a+=enteros[i];
 		}
 		suma.stop();
@@ -36,9 +36,9 @@ public class Entero extends QuickSort{
 	public void restaEntero(int enteros[]){
 		Tiempo resta = new Tiempo();
 		@SuppressWarnings("unused")
-		int b=0;
+		int b=enteros[0];
 		resta.start();
-		for(int i=0;i<enteros.length;i++){
+		for(int i=1;i<enteros.length;i++){
 			b-=enteros[i];
 		}
 		resta.stop();
@@ -66,7 +66,7 @@ public class Entero extends QuickSort{
 		int d = enteros[0] ;
 		division.start();
 		for ( int i=1; i<enteros.length;i++){
-			d/=enteros[i];
+			d=d/(enteros[i]);
 		}
 		division.stop();
 		timeDivide= division.tomo();

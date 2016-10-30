@@ -12,10 +12,10 @@ public class Datos implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<String> descripcion = new ArrayList<>();
-	private ArrayList<int []> enterosArray = new ArrayList<>();
-	private ArrayList<int []> enterosOrdenadosArray = new ArrayList<>();
-	private ArrayList<double []> doublesArray = new ArrayList<>();
-	private ArrayList<double []> doublesOrdenadosArray = new ArrayList<>();
+	public int [] enterosArray;
+	public int [] enterosOrdenadosArray;
+	public double [] doublesArray ;
+	public double [] doublesOrdenadosArray;
 	private double [] timeQuickSortEnteros = new double[10000];
 	private double [] timePlusEnteros = new double[10000];
 	private double [] timeMinusEnteros = new double[10000];
@@ -31,16 +31,16 @@ public class Datos implements Serializable {
 	private double [] timeGuardado = new double[10000];
 	private int free;
 	
-	public void addTest(String descripcion, int[] enterosArray, int[] enterosOrdenadosArray, double[] doublesArray,
-			double[] doublesOrdenadosArray, double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
+	public void addTest(String descripcion, /*int[] enterosArray, int[] enterosOrdenadosArray, double[] doublesArray,
+			double[] doublesOrdenadosArray,*/ double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
 			double timeMultiplyEnteros, double timeDivideEnteros, double timeQuickSortDoubles, double timePlusDoubles, 
 			double timeMinusDoubles, double timeMultiplyDoubles, double timeDivideDoubles, double timeAtanDoubles, 
 			double timeLectura, double timeGuardado) {
 		this.descripcion.add(descripcion);
-		this.enterosArray.add(enterosArray);
-		this.enterosOrdenadosArray.add(enterosOrdenadosArray);
-		this.doublesArray.add(doublesArray);
-		this.doublesOrdenadosArray.add(doublesOrdenadosArray);
+		//this.enterosArray.add(enterosArray);
+		//this.enterosOrdenadosArray.add(enterosOrdenadosArray);
+		//this.doublesArray.add(doublesArray);
+		//this.doublesOrdenadosArray.add(doublesOrdenadosArray);
 		this.timeQuickSortEnteros[free] = timeQuickSortEnteros;
 		this.timePlusEnteros[free] = timePlusEnteros;
 		this.timeMinusEnteros[free] = timeMinusEnteros;
@@ -61,20 +61,20 @@ public class Datos implements Serializable {
 		return descripcion.get(i);
 	}
 	
-	public int[] getEnterosArray(int i) {
-		return enterosArray.get(i);
+	public int[] getEnterosArray() {
+		return enterosArray;
 	}
 	
-	public int[] getEnterosOrdenadosArray(int i) {
-		return enterosOrdenadosArray.get(i);
+	public int[] getEnterosOrdenadosArray() {
+		return enterosOrdenadosArray;
 	}
 	
-	public double[] getDoublesArray(int i) {
-		return doublesArray.get(i);
+	public double[] getDoublesArray(/*int i*/) {
+		return doublesArray;
 	}
 	
-	public double[] getDoublesOrdenadosArray(int i) {
-		return doublesOrdenadosArray.get(i);
+	public double[] getDoublesOrdenadosArray(/*int i*/) {
+		return doublesOrdenadosArray;
 	}
 	
 	public double getTimeQuickSortEnteros(int i) {
@@ -135,6 +135,12 @@ public class Datos implements Serializable {
 	
 	public void initalizeMadeTests() {
 		free = 0;
+	}
+	public void setArrays(int[] enterosArra,int[] enterosOrdenadosArra,double[] doublesArra,double[] doublesOrdenadosArra ){
+		this.enterosArray=enterosArra;
+		this.enterosOrdenadosArray=enterosOrdenadosArra;
+		this.doublesArray=doublesArra;
+		this.doublesOrdenadosArray=doublesOrdenadosArra;
 	}
 	
 }

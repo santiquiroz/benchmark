@@ -75,7 +75,7 @@ public class Double {
 		time.reset(); time.start();
 		@SuppressWarnings("unused")
 		double X;
-		for (int i = 1; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) {
 			X = Math.atan(a[i]);
 		}
 		time.stop(); timeAtan= time.tomo(); time.reset();

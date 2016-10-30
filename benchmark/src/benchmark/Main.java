@@ -5,13 +5,15 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Datos datos = new Datos();
-	private static GestorDatos gestorDatos = new GestorDatos();
 	
-	@SuppressWarnings("static-access")
+	
+	//@SuppressWarnings("static-access")
 	public static void main(String[] args) {
-		
-		@SuppressWarnings("resource")
+		Datos datos = new Datos();
+		GestorDatos gestorDatos = new GestorDatos();
+		/*int d[]=creadorArreglos.getArrayEnteros();
+		System.out.println("hola"+d[2]);
+		//@SuppressWarnings("resource")*/
 		Scanner input = new Scanner(System.in);
 		
 		datos = gestorDatos.leerDatos();
@@ -21,7 +23,18 @@ public class Main {
 			datos.initalizeMadeTests();
 		}
 		boolean b = false; int accion;
-		
+		if((datos.getDoublesArray()==null)){
+			CreadorArreglos creadorArreglos = new CreadorArreglos();
+			datos.enterosArray=creadorArreglos.getArrayEnteros();
+			datos.enterosOrdenadosArray=creadorArreglos.getArrayEnterosOrdenados();
+			datos.doublesArray=creadorArreglos.getArrayDoubles();
+			datos.doublesOrdenadosArray=creadorArreglos.getArrayDoublesOrdenados();
+			//datos.setArrays(creadorArreglos.getArrayEnteros(), creadorArreglos.getArrayEnterosOrdenados(), creadorArreglos.getArrayDoubles(),creadorArreglos.getArrayDoublesOrdenados());
+		}
+		int a[]=datos.getEnterosArray();
+		System.out.println(a[1000]);
+		int ba[]=datos.getEnterosOrdenadosArray();
+		System.out.println(ba[23]);
 		System.out.println("");
 		System.out.println("WELCOME TO THE FUTURE OF BENCHMARKS :v");
 		
@@ -34,15 +47,17 @@ public class Main {
 			accion = input.nextInt();
 			System.out.println("");
 			
-			if ( accion == 1 ) {
-				CreadorArreglos creadorArreglos = new CreadorArreglos();
-				Entero entero = new Entero(creadorArreglos.getArrayEnteros());
-				Double doble = new Double(creadorArreglos.getArrayDoubles());
+			if ( accion == 1 ) {	
+				
+				Entero entero = new Entero(datos.getEnterosArray());
+				Entero eOrdenado = new Entero(datos.getEnterosOrdenadosArray());
+				Double doble = new Double(datos.getDoublesArray());
+				Double dOrdenado = new Double(datos.getDoublesOrdenadosArray());
 				datos.addTest("---- TEST NUMBER "+(datos.getMadeTests()+1)+" ----",
-						creadorArreglos.getArrayEnteros(), creadorArreglos.getArrayEnterosOrdenados(),
-						creadorArreglos.getArrayDoubles(), creadorArreglos.getArrayDoublesOrdenados(),
-						entero.getTimeQuickSort(), entero.getTimeSuma(), entero.getTimeResta(), entero.getTimeMultiplicacion(),
-						entero.getTimeDivision(), doble.getTimeQuickSort(), doble.getTimeSuma(), doble.getTimeResta(), 
+						/*creadorArreglos.getArrayEnteros(), creadorArreglos.getArrayEnterosOrdenados(),
+						creadorArreglos.getArrayDoubles(), creadorArreglos.getArrayDoublesOrdenados(),*/
+						eOrdenado.getTimeQuickSort(), entero.getTimeSuma(), entero.getTimeResta(), entero.getTimeMultiplicacion(),
+						entero.getTimeDivision(), dOrdenado.getTimeQuickSort(), doble.getTimeSuma(), doble.getTimeResta(), 
 						doble.getTimeMultiplicacion(), doble.getTimeDivision(), doble.getTimeAtan(), 
 						gestorDatos.getTiempoLectura(), gestorDatos.getTiempoGuardado());
 				gestorDatos.guardarDatos(datos);
