@@ -14,6 +14,10 @@ import org.hyperic.sigar.SysInfo;
 public class Main {
 	
 	public static void main(String[] args) {
+		
+		//De esta variable se cambia el tamaño de todos los arreglos
+		final int valorArray = 1000000000;
+		
 		//sistema operativo
 		OperatingSystem os=OperatingSystem.getInstance();
 		//procesador
@@ -99,7 +103,7 @@ public class Main {
 				System.out.println(ram);
 				System.out.println("-----INFO INTERCAMBIO-----");
 				System.out.println(intercambio);
-				System.out.println("Después de realizar cada una de las operaciones con un arreglo de 1'000.000");
+				System.out.println("Después de realizar cada una de las operaciones con un arreglo de " + valorArray);
 				System.out.println("de datos elegidos aletoriamente se obtuvo:");
 				System.out.println("----- Tiempo de operaciones con enteros -----");
 				System.out.println("Suma: " + se + " milisegundos");
