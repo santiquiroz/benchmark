@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.hyperic.sigar.Mem;
+import org.hyperic.sigar.Swap;
 
 public class Datos implements Serializable {
 	
@@ -37,8 +38,10 @@ public class Datos implements Serializable {
 	private double [] timeLectura = new double[10000];
 	private double [] timeGuardado = new double[10000];
 	private int free;
+
+	private Swap[] intercambio=new Swap[10000];
 	
-	public void addTest(String descripcion,String arquitect, String cpu,String nucleos,String cach,Mem ramm,double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
+	public void addTest(String descripcion,String arquitect, String cpu,String nucleos,String cach,Mem ramm,Swap inte,double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
 			double timeMultiplyEnteros, double timeDivideEnteros, double timeQuickSortDoubles, double timePlusDoubles, 
 			double timeMinusDoubles, double timeMultiplyDoubles, double timeDivideDoubles, double timeAtanDoubles, 
 			double timeLectura, double timeGuardado) {
@@ -48,6 +51,7 @@ public class Datos implements Serializable {
 		this.cores[free]=nucleos;
 		this.cache[free]=cach;
 		this.RAM[free] = ramm;
+		this.intercambio[free]=inte;
 		this.timeQuickSortEnteros[free] = timeQuickSortEnteros;
 		this.timePlusEnteros[free] = timePlusEnteros;
 		this.timeMinusEnteros[free] = timeMinusEnteros;
@@ -167,5 +171,11 @@ public class Datos implements Serializable {
 		return this.cache[i];
 	}
 
+	public String getRam(int i) {
+		return this.RAM[i].toString();
+	}
+	public String getIntercambio(int i) {
+		return this.intercambio[i].toString();
+	}
 	
 }

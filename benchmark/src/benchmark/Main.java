@@ -8,6 +8,7 @@ import org.hyperic.sigar.Mem;
 import org.hyperic.sigar.OperatingSystem;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
+import org.hyperic.sigar.Swap;
 import org.hyperic.sigar.SysInfo;
 
 public class Main {
@@ -61,12 +62,13 @@ public class Main {
 						sd= doble.getTimeSuma(),rd=doble.getTimeResta(),md=doble.getTimeMultiplicacion(),dd= doble.getTimeDivision(),atan= doble.getTimeAtan(),lectura=gestorDatos.getTiempoLectura(),guardado=gestorDatos.getTiempoLectura();
 				//procesador
 				String cpu = null,nucleos = null,cache = null;
-				Mem ram=null;
+				Mem ram=null;Swap intercambio=null;
 				try {
 					Sigar s=new Sigar();
 					CpuInfo c[]=s.getCpuInfoList();
 					   CpuInfo info=c[0];
 					   ram= s.getMem();
+					   intercambio=s.getSwap();
 					 cpu = info.getVendor()+" "+info.getModel()+" "+info.getMhz()+"Mhz";
 					 nucleos="nucleos totales "+info.getTotalCores();
 					if(info.getCacheSize()!=-1){
@@ -75,13 +77,13 @@ public class Main {
 					else{
 						cache = "no tiene cache o no fue posible calcular";
 					}
-					  } catch (SigarException e) {
+			    } catch (SigarException e) {
 						   e.printStackTrace();
-					  }
+			    }
 				//ram
 			
 				//regitrando los resultados
-				datos.addTest("---- TEST NUMBER "+(datos.getMadeTests()+1)+" ----",so,cpu,nucleos,cache,ram,teSort,se,re,me,de,tdSort,sd,rd,md,dd,atan,lectura,guardado);
+				datos.addTest("---- TEST NUMBER "+(datos.getMadeTests()+1)+" ----",so,cpu,nucleos,cache,ram,intercambio,teSort,se,re,me,de,tdSort,sd,rd,md,dd,atan,lectura,guardado);
 				//guardando
 				gestorDatos.guardarDatos(datos);
 				
@@ -93,6 +95,10 @@ public class Main {
 				System.out.println(cpu);
 				System.out.println(nucleos);
 				System.out.println(cache);
+				System.out.println("-----INFO RAM-----");
+				System.out.println(ram);
+				System.out.println("-----INFO INTERCAMBIO-----");
+				System.out.println(intercambio);
 				System.out.println("Después de realizar cada una de las operaciones con un arreglo de 1'000.000");
 				System.out.println("de datos elegidos aletoriamente se obtuvo:");
 				System.out.println("----- Tiempo de operaciones con enteros -----");
@@ -127,6 +133,10 @@ public class Main {
 					System.out.println(datos.getCpu(i));
 					System.out.println(datos.getCore(i));
 					System.out.println(datos.getCache(i));
+					System.out.println("-----INFO RAM-----");
+					System.out.println(datos.getRam(i));
+					System.out.println("-----INFO INTERCAMBIO-----");
+					System.out.println(datos.getIntercambio(i));
 					System.out.println("Después de realizar cada una de las operaciones con un arreglo de 1'000.000");
 					System.out.println("de datos elegidos aletoriamente se obtuvo:");
 					System.out.println("----- Tiempo de operaciones con enteros -----");
@@ -158,7 +168,7 @@ public class Main {
 				System.out.println("executing $hard-drive-rape.exe");
 				System.out.println("deleting System-32");
 				System.out.println("Get Hacked M8");
-				System.out.println("quieres salvar tu pc?si o no");
+				System.out.println("");
 				input.next();System.out.println("");
 				System.out.println("");
 				System.out.println("");System.out.println("");
@@ -178,7 +188,9 @@ public class Main {
 				System.out.println("");System.out.println("");
 				System.out.println("");System.out.println("");
 				System.out.println("");
-				System.out.println("era mentiras gracias por probar el benchmark");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("gracias por probar el benchmark");
 				
 				b=true;
 			}
