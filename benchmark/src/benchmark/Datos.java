@@ -4,6 +4,8 @@ package benchmark;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.hyperic.sigar.Mem;
+
 public class Datos implements Serializable {
 	
 	/**
@@ -16,6 +18,11 @@ public class Datos implements Serializable {
 	public int [] enterosOrdenadosArray;
 	public double [] doublesArray ;
 	public double [] doublesOrdenadosArray;
+	private String[] arquitecturas = new String[10000];
+	private String[] cpus= new String[10000];
+	private String[] cores= new String[10000];
+	private String[] cache= new String[10000];
+	private Mem[] RAM= new Mem[10000];
 	private double [] timeQuickSortEnteros = new double[10000];
 	private double [] timePlusEnteros = new double[10000];
 	private double [] timeMinusEnteros = new double[10000];
@@ -31,16 +38,16 @@ public class Datos implements Serializable {
 	private double [] timeGuardado = new double[10000];
 	private int free;
 	
-	public void addTest(String descripcion, /*int[] enterosArray, int[] enterosOrdenadosArray, double[] doublesArray,
-			double[] doublesOrdenadosArray,*/ double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
+	public void addTest(String descripcion,String arquitect, String cpu,String nucleos,String cach,Mem ramm,double timeQuickSortEnteros, double timePlusEnteros, double timeMinusEnteros,
 			double timeMultiplyEnteros, double timeDivideEnteros, double timeQuickSortDoubles, double timePlusDoubles, 
 			double timeMinusDoubles, double timeMultiplyDoubles, double timeDivideDoubles, double timeAtanDoubles, 
 			double timeLectura, double timeGuardado) {
 		this.descripcion.add(descripcion);
-		//this.enterosArray.add(enterosArray);
-		//this.enterosOrdenadosArray.add(enterosOrdenadosArray);
-		//this.doublesArray.add(doublesArray);
-		//this.doublesOrdenadosArray.add(doublesOrdenadosArray);
+		this.arquitecturas[free]=arquitect;
+		this.cpus[free]=cpu;
+		this.cores[free]=nucleos;
+		this.cache[free]=cach;
+		this.RAM[free] = ramm;
 		this.timeQuickSortEnteros[free] = timeQuickSortEnteros;
 		this.timePlusEnteros[free] = timePlusEnteros;
 		this.timeMinusEnteros[free] = timeMinusEnteros;
@@ -127,7 +134,12 @@ public class Datos implements Serializable {
 	
 	public double getTimeGuardado(int i) {
 		return timeGuardado[i];
+		
 	}
+	public String getArquitectura(int i) {
+		return this.arquitecturas[i];
+	}
+	
 	
 	public int getMadeTests() {
 		return free;
@@ -142,5 +154,18 @@ public class Datos implements Serializable {
 		this.doublesArray=doublesArra;
 		this.doublesOrdenadosArray=doublesOrdenadosArra;
 	}
+
+	public String getCpu(int i) {
+		return this.cpus[i];
+	}
+
+	public String getCore(int i) {
+		return this.cores[i];
+	}
+
+	public String getCache(int i) {
+		return this.cache[i];
+	}
+
 	
 }

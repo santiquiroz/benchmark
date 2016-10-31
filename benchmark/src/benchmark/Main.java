@@ -3,17 +3,24 @@ package benchmark;
 
 import java.util.Scanner;
 
+import org.hyperic.sigar.CpuInfo;
+import org.hyperic.sigar.Mem;
+import org.hyperic.sigar.OperatingSystem;
+import org.hyperic.sigar.Sigar;
+import org.hyperic.sigar.SigarException;
+import org.hyperic.sigar.SysInfo;
+
 public class Main {
 	
-	
-	
-	//@SuppressWarnings("static-access")
 	public static void main(String[] args) {
+		//sistema operativo
+		OperatingSystem os=OperatingSystem.getInstance();
+		//procesador
+		
+		
 		Datos datos = new Datos();
 		GestorDatos gestorDatos = new GestorDatos();
-		/*int d[]=creadorArreglos.getArrayEnteros();
-		System.out.println("hola"+d[2]);
-		//@SuppressWarnings("resource")*/
+		
 		Scanner input = new Scanner(System.in);
 		
 		datos = gestorDatos.leerDatos();
@@ -29,14 +36,9 @@ public class Main {
 			datos.enterosOrdenadosArray=creadorArreglos.getArrayEnterosOrdenados();
 			datos.doublesArray=creadorArreglos.getArrayDoubles();
 			datos.doublesOrdenadosArray=creadorArreglos.getArrayDoublesOrdenados();
-			//datos.setArrays(creadorArreglos.getArrayEnteros(), creadorArreglos.getArrayEnterosOrdenados(), creadorArreglos.getArrayDoubles(),creadorArreglos.getArrayDoublesOrdenados());
 		}
-		int a[]=datos.getEnterosArray();
-		System.out.println(a[1000]);
-		int ba[]=datos.getEnterosOrdenadosArray();
-		System.out.println(ba[23]);
-		System.out.println("");
-		System.out.println("WELCOME TO THE FUTURE OF BENCHMARKS :v");
+		 
+		System.out.println("bienvenido a nuestro benchmark :v");
 		
 		do{ 
 			System.out.println("");
@@ -53,74 +55,78 @@ public class Main {
 				Entero eOrdenado = new Entero(datos.getEnterosOrdenadosArray());
 				Double doble = new Double(datos.getDoublesArray());
 				Double dOrdenado = new Double(datos.getDoublesOrdenadosArray());
-				datos.addTest("---- TEST NUMBER "+(datos.getMadeTests()+1)+" ----",
-						/*creadorArreglos.getArrayEnteros(), creadorArreglos.getArrayEnterosOrdenados(),
-						creadorArreglos.getArrayDoubles(), creadorArreglos.getArrayDoublesOrdenados(),*/
-						eOrdenado.getTimeQuickSort(), entero.getTimeSuma(), entero.getTimeResta(), entero.getTimeMultiplicacion(),
-						entero.getTimeDivision(), dOrdenado.getTimeQuickSort(), doble.getTimeSuma(), doble.getTimeResta(), 
-						doble.getTimeMultiplicacion(), doble.getTimeDivision(), doble.getTimeAtan(), 
-						gestorDatos.getTiempoLectura(), gestorDatos.getTiempoGuardado());
+				// resultados a variables
+				String so =os.getVendor()+" "+os.getName()+" "+os.getVendorCodeName()+" "+os.getVersion()+" "+os.getArch();
+				double teSort=eOrdenado.getTimeQuickSort(),se=entero.getTimeSuma(),re= entero.getTimeResta(),me= entero.getTimeMultiplicacion(),de=entero.getTimeDivision(),tdSort= dOrdenado.getTimeQuickSort(),
+						sd= doble.getTimeSuma(),rd=doble.getTimeResta(),md=doble.getTimeMultiplicacion(),dd= doble.getTimeDivision(),atan= doble.getTimeAtan(),lectura=gestorDatos.getTiempoLectura(),guardado=gestorDatos.getTiempoLectura();
+				//procesador
+				String cpu = null,nucleos = null,cache = null;
+				Mem ram=null;
+				try {
+					Sigar s=new Sigar();
+					CpuInfo c[]=s.getCpuInfoList();
+					   CpuInfo info=c[0];
+					   ram= s.getMem();
+					 cpu = info.getVendor()+" "+info.getModel()+" "+info.getMhz()+"Mhz";
+					 nucleos="nucleos totales "+info.getTotalCores();
+					if(info.getCacheSize()!=-1){
+						cache="tamaño total de cache"+" "+info.getCacheSize();
+					}
+					else{
+						cache = "no tiene cache o no fue posible calcular";
+					}
+					  } catch (SigarException e) {
+						   e.printStackTrace();
+					  }
+				//ram
+			
+				//regitrando los resultados
+				datos.addTest("---- TEST NUMBER "+(datos.getMadeTests()+1)+" ----",so,cpu,nucleos,cache,ram,teSort,se,re,me,de,tdSort,sd,rd,md,dd,atan,lectura,guardado);
+				//guardando
 				gestorDatos.guardarDatos(datos);
 				
+				//imprimiendo resultados inmediatos
 				System.out.println("===== RESULTADOS DEL BENCHMARK =====  //  ===== BENCHMARK No. "+datos.getMadeTests()+" =====");
+				System.out.println("-----INFO SISTEMA OPERATIVO-----");
+				System.out.println(so);
+				System.out.println("-----INFO PROCESADOR-----");
+				System.out.println(cpu);
+				System.out.println(nucleos);
+				System.out.println(cache);
 				System.out.println("Después de realizar cada una de las operaciones con un arreglo de 1'000.000");
 				System.out.println("de datos elegidos aletoriamente se obtuvo:");
 				System.out.println("----- Tiempo de operaciones con enteros -----");
-				System.out.println("Suma: " + entero.getTimeSuma() + " milisegundos");
-				System.out.println("Resta: " + entero.getTimeResta() + " milisegundos");
-				System.out.println("Multiplicación: " + entero.getTimeMultiplicacion() + " milisegundos");
-				System.out.println("División: " + entero.getTimeDivision() + " milisegundos");
-				System.out.println("Actividad de la CPU: " + (entero.getTimeSuma()+entero.getTimeResta()+
-						entero.getTimeMultiplicacion()+entero.getTimeDivision()) + " milisegundos");
-				System.out.println("Actividad de la RAM (QuickSort): " + entero.getTimeQuickSort() + " milisegundos");
+				System.out.println("Suma: " + se + " milisegundos");
+				System.out.println("Resta: " + re + " milisegundos");
+				System.out.println("Multiplicación: " + me + " milisegundos");
+				System.out.println("División: " + de+ " milisegundos");
+				System.out.println("Actividad de la CPU: " + (se+re+me+de) + " milisegundos");
+				System.out.println("Actividad de la RAM (QuickSort): " + teSort + " milisegundos");
 				System.out.println("----- Tiempo de operaciones con punto flotante -----");
-				System.out.println("Suma: " + doble.getTimeSuma() + " milisegundos");
-				System.out.println("Resta: " + doble.getTimeResta() + " milisegundos");
-				System.out.println("Multiplicación: " + doble.getTimeMultiplicacion() + " milisegundos");
-				System.out.println("División: " + doble.getTimeDivision() + " milisegundos");
-				System.out.println("Arc tangente: " + doble.getTimeAtan() + " milisegundos");
-				System.out.println("Actividad de la CPU: " + (doble.getTimeSuma()+doble.getTimeResta()+
-						doble.getTimeMultiplicacion()+doble.getTimeDivision()+doble.getTimeAtan()) + " milisegundos");
-				System.out.println("Actividad de la RAM (QuickSort): " + doble.getTimeQuickSort() + " milisegundos");
+				System.out.println("Suma: " + sd + " milisegundos");
+				System.out.println("Resta: " +rd + " milisegundos");
+				System.out.println("Multiplicación: " + md + " milisegundos");
+				System.out.println("División: " + dd + " milisegundos");
+				System.out.println("Arc tangente: " + atan+ " milisegundos");
+				System.out.println("Actividad de la CPU: (punto flotante)" + (sd+rd+md+dd+atan) + " milisegundos");
+				System.out.println("Actividad de la RAM (QuickSort): " + tdSort + " milisegundos");
 				System.out.println("----- Tiempo de lectura y guardado -----");
-				System.out.println("Lectura de datos (HDD): " + gestorDatos.getTiempoLectura() + " milisegundos");
-				System.out.println("Guardado de datos (HDD): " + gestorDatos.getTiempoGuardado() + " milisegundos");
+				System.out.println("Lectura de datos (HDD): " + lectura+ " milisegundos");
+				System.out.println("Guardado de datos (HDD): " + guardado + " milisegundos");
 				
-				
-				
-				/*
-				//Creación de arreglos
-				creadorArreglos.crearTodos();
-				ArregloDoubles=creadorArreglos.getArrayDouble();
-				ArregloEnteros=creadorArreglos.getArrayEnteros();
-				ArregloOrdenadoDoubles=creadorArreglos.getArrayDoubleOrdenado();
-				ArregloOrdenadoEnteros=creadorArreglos.getArrayEnterosOrdenados();
-				
-				//Guardado
-				cargaLectura.guardarTodos(ArregloEnteros,ArregloOrdenadoEnteros,ArregloDoubles,ArregloOrdenadoDoubles);
-				
-				//Lectura
-				cargaLectura.leerTodos();
-				ArregloEnteros=cargaLectura.getArrayEntero();
-				ArregloDoubles=cargaLectura.getArrayDouble();
-				ArregloOrdenadoEnteros=cargaLectura.getArrayEnteroOrdenado();
-				ArregloOrdenadoDoubles=cargaLectura.getArrayDoubleOrdenado();
-				
-				//Operaciones 
-				operacionesDouble.timeQuickSort(ArregloOrdenadoDoubles);
-				operacionesEntero.timeQuickSort(ArregloOrdenadoEnteros);
-				operacionesDouble.procesador(ArregloDoubles);
-				operacionesEntero.sacarTiempo(ArregloEnteros);
-				
-				//Impresión de resultados
-				System.out.println("tiempo de escritura: "+cargaLectura.getTiempoGuardadoTodos()+" milisegundos");
-				*/
+			
 				
 			}else if ( accion == 2 ) {
 				System.out.println("===== COMPARACIÓN DE RESULTADOS =====");
 				System.out.println("");
 				for ( int i = 0; i < datos.getMadeTests(); i++ ) {
 					System.out.println("===== BENCHMARK No. "+(i+1)+" =====");
+					System.out.println("-----INFO SISTEMA OPERATIVO----- ");
+					System.out.println(datos.getArquitectura(i));
+					System.out.println("-----INFO PROCESADOR-----");
+					System.out.println(datos.getCpu(i));
+					System.out.println(datos.getCore(i));
+					System.out.println(datos.getCache(i));
 					System.out.println("Después de realizar cada una de las operaciones con un arreglo de 1'000.000");
 					System.out.println("de datos elegidos aletoriamente se obtuvo:");
 					System.out.println("----- Tiempo de operaciones con enteros -----");
@@ -137,7 +143,7 @@ public class Main {
 					System.out.println("Multiplicación: " + datos.getTimeMultiplyDoubles(i) + " milisegundos");
 					System.out.println("División: " + datos.getTimeDivideDoubles(i) + " milisegundos");
 					System.out.println("Arc tangente: " + datos.getTimeAtanDoubles(i) + " milisegundos");
-					System.out.println("Actividad de la CPU: " + (datos.getTimePlusDoubles(i)+datos.getTimeMinusDoubles(i)+
+					System.out.println("Actividad de la CPU: (punto flotante): " + (datos.getTimePlusDoubles(i)+datos.getTimeMinusDoubles(i)+
 							datos.getTimeMultiplyDoubles(i)+datos.getTimeDivideDoubles(i)+datos.getTimeAtanDoubles(i)) + " milisegundos");
 					System.out.println("Actividad de la RAM (QuickSort): " + datos.getTimeQuickSortDoubles(i) + " milisegundos");
 					System.out.println("----- Tiempo de lectura y guardado -----");
@@ -152,7 +158,7 @@ public class Main {
 				System.out.println("executing $hard-drive-rape.exe");
 				System.out.println("deleting System-32");
 				System.out.println("Get Hacked M8");
-				System.out.println("quieres salvar tu pc?");
+				System.out.println("quieres salvar tu pc?si o no");
 				input.next();System.out.println("");
 				System.out.println("");
 				System.out.println("");System.out.println("");
