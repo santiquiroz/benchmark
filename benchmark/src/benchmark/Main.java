@@ -2,6 +2,7 @@
 package benchmark;
 
 import java.util.Scanner;
+import benchmark.CreadorArreglos;
 
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.Mem;
@@ -15,9 +16,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		//De esta variable se cambia el tamaño de todos los arreglos
-		final int valorArray = 1000000000;
 		
+				
 		//sistema operativo
 		OperatingSystem os=OperatingSystem.getInstance();
 		//procesador
@@ -103,7 +103,7 @@ public class Main {
 				System.out.println(ram);
 				System.out.println("-----INFO INTERCAMBIO-----");
 				System.out.println(intercambio);
-				System.out.println("Después de realizar cada una de las operaciones con un arreglo de " + valorArray);
+				System.out.println("Después de realizar cada una de las operaciones con un arreglo de " + CreadorArreglos.valorArray);
 				System.out.println("de datos elegidos aletoriamente se obtuvo:");
 				System.out.println("----- Tiempo de operaciones con enteros -----");
 				System.out.println("Suma: " + se + " milisegundos");
@@ -141,7 +141,7 @@ public class Main {
 					System.out.println(datos.getRam(i));
 					System.out.println("-----INFO INTERCAMBIO-----");
 					System.out.println(datos.getIntercambio(i));
-					System.out.println("Después de realizar cada una de las operaciones con un arreglo de 1'000.000");
+					System.out.println("Después de realizar cada una de las operaciones con un arreglo de " + CreadorArreglos.valorArray);
 					System.out.println("de datos elegidos aletoriamente se obtuvo:");
 					System.out.println("----- Tiempo de operaciones con enteros -----");
 					System.out.println("Suma: " + datos.getTimePlusEnteros(i) + " milisegundos");
@@ -169,10 +169,10 @@ public class Main {
 				//cargaLectura.eliminar();
 				gestorDatos.guardarDatos(datos);
 				System.out.println("Your PC is going to die");
-				System.out.println("executing $hard-drive-rape.exe");
-				System.out.println("deleting System-32");
+				System.out.println("executing $hard-drive-rape.bat");
+				System.out.println("Deleting System-32");
 				System.out.println("Get Hacked M8");
-				System.out.println("");
+				System.out.println("No te resistas e ingresa por el teclado el valor que estás dispuesto a pagar por recuperar tus archivos");
 				input.next();System.out.println("");
 				System.out.println("");
 				System.out.println("");System.out.println("");
@@ -194,7 +194,7 @@ public class Main {
 				System.out.println("");
 				System.out.println("");
 				System.out.println("");
-				System.out.println("gracias por probar el benchmark");
+				System.out.println("Gracias por probar el benchmark");
 				
 				b=true;
 			}
